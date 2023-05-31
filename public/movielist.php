@@ -18,7 +18,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 
 <head>
 	<!-- Basic need -->
-	<title>Open Pediatrics</title>
+	<title>MovieVerse</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
