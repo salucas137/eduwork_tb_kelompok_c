@@ -1,6 +1,6 @@
 <?php
 
-include 'dbconnect.php';
+include '../admin/dbconnect.php';
 $query = mysqli_query($conn, "SELECT * FROM `film`");
 
 ?>
@@ -32,15 +32,15 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 	<meta name="format-detection" content="telephone-no">
 
 	<!-- CSS files -->
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/plugins.css">
+	<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
 <body>
 	<!--preloading-->
 	<div id="preloader">
-		<img class="logo" src="images/logo.png" alt="" width="240" height="">
+		<img class="logo" src="../images/logo.png" alt="" width="240" height="">
 		<div id="status">
 			<span></span>
 			<span></span>
@@ -106,7 +106,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 							<span></span>
 						</div>
 					</div>
-					<a href="index-2.html"><img class="logo" src="images/logo.png" alt="" width="240" height=""></a>
+					<a href="index.html"><img class="logo" src="../images/logo.png" alt="" width="240" height=""></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -179,13 +179,13 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
                     <?php
                         while ($data = mysqli_fetch_array($query)) : ?>
 						<div class="movie-item-style-2 movie-item-style-1">
-							<img src="images/uploads/mv1.jpg" alt="">
+							<img src="../images/uploads/mv1.jpg" alt="">
 							<div class="hvr-inner">
 								<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 							</div>
 							<div class="mv-item-infor">
 								<h6><a href="#"><?php echo $data["nama_film"]; ?></a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span><?php echo $data["rating"]; ?></span> </p>
+								<p class="rate"><i class="ion-android-star"></i><span><?php echo $data["rating"]; ?></span>/10 </p>
 							</div>
 						</div>
                         <?php endwhile ?>
@@ -218,7 +218,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 		<div class="container">
 			<div class="flex-parent-ft">
 				<div class="flex-child-ft item1">
-					<a href="index-2.html"><img class="logo" src="images/logo.png" alt="" width="240"></a>
+					<a href="index.html"><img class="logo" src="../images/logo.png" alt="" width="240"></a>
 					<p>5th Avenue st, manhattan<br>
 						New York, NY 10001</p>
 					<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
@@ -272,10 +272,10 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 	</footer>
 	<!-- end of footer section-->
 
-	<script src="js/jquery.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/plugins2.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/plugins.js"></script>
+	<script src="../js/plugins2.js"></script>
+	<script src="../js/custom.js"></script>
 </body>
 
 <!-- moviegridfw07:38-->

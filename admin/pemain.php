@@ -1,28 +1,19 @@
-<?php
-
-include 'dbconnect.php';?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css" />
-
-    <title>Dashboard - Admin Dashboard</title>
+    <title>Table Datatable - Admin Dashboard</title>
     
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/main/app-dark.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
     
-<link rel="stylesheet" href="assets/css/shared/iconly.css">
+<link rel="stylesheet" href="assets/css/pages/fontawesome.css">
+<link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="assets/css/pages/datatables.css">
 
 </head>
 
@@ -53,7 +44,7 @@ include 'dbconnect.php';?>
             <li class="sidebar-title">Menu</li>
             
             <li
-                class="sidebar-item active ">
+                class="sidebar-item  ">
                 <a href="index.php" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
@@ -91,6 +82,7 @@ include 'dbconnect.php';?>
                     <span>Kategori</span>
                 </a>
             </li>
+            
         </ul>
     </div>
 </div>
@@ -103,107 +95,41 @@ include 'dbconnect.php';?>
             </header>
             
 <div class="page-heading">
-    <h3>Dashboard</h3>
-</div>
-<div class="page-content">
-    <section class="row">
-        <div class="col-12 col-lg-9">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon purple mb-2">
-                                        <i class="iconly-boldShow"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Film Views</h6>
-                                    <h6 class="font-extrabold mb-0">100.000</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon blue mb-2">
-                                        <i class="iconly-boldChat"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Comentar</h6>
-                                    <h6 class="font-extrabold mb-0">110</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon green mb-2">
-                                        <i class="iconly-boldStar"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Rating</h6>
-                                    <h6 class="font-extrabold mb-0">100</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon red mb-2">
-                                        <i class="iconly-boldBookmark"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                    <h6 class="font-extrabold mb-0">115</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>DataTable Pemain</h3>
             </div>
-            <div class="page-heading">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Datatable</h4>
-                        </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">DataTable Pemain</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Basic Tables start -->
     <section class="section">
         <div class="card">
+            <div class="card-header">
+                Jquery Datatable
+            </div>
             <div class="card-body">
-                <table class="table table-striped" id="table1">
+                <table class="table" id="table1">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Film</th>
-                            <th>Sinopsis</th>
-                            <th>Durasi</th>
-                            <th>Tahun Rillis</th>
-                            <th>Rating</th>
+                            <th>Nama Pemain</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                    <?php
                             include "dbconnect.php";
-                            $select_film = $conn->prepare("SELECT * FROM `film`");
+                            $select_film = $conn->prepare("SELECT * FROM `pemain`");
                             $select_film->execute();
                             if($select_film->rowCount() > 0){
                                 $no=1;
@@ -211,12 +137,7 @@ include 'dbconnect.php';?>
                         ?>
                         <tr>
                             <td><?php echo $no ?></td>
-                            <td><?php echo $fetch_film["nama_film"]; ?></td>
-                            <td><?php echo $fetch_film["sinopsis"]; ?></td>
-                            <td><?php echo $fetch_film["durasi"]; ?></td>
-                            <td><?php echo $fetch_film["durasi"]; ?></td>
-                            <td><?php echo $fetch_film["tahun_rillis"]; ?></td>
-                            <td><?php echo $fetch_film["rating"]; ?></td>
+                            <td><?php echo $fetch_film["nama_pemain"]; ?></td>
                             <td>
                             <div class="flex-btn">
                                 <a href="update_film.php?update=<?= $fetch_film['id']; ?>" class="option-btn">update</a>
@@ -231,25 +152,22 @@ include 'dbconnect.php';?>
          echo '<p class="empty">no products added yet!</p>';
       }
         ?>
-        </tbody>
+                    </tbody>
                 </table>
             </div>
-        <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-       </script>
-
         </div>
-    </section>
-</div>
 
+    </section>
+    <!-- Basic Tables end -->
+</div>
+        </div>
+    </div>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/app.js"></script>
     
-<!-- Need: Apexcharts -->
-<script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
-<script src="assets/js/pages/dashboard.js"></script>
+<script src="assets/extensions/jquery/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+<script src="assets/js/pages/datatables.js"></script>
 
 </body>
 
