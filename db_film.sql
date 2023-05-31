@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2023 at 02:45 PM
+-- Generation Time: May 31, 2023 at 03:24 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -57,6 +57,18 @@ INSERT INTO `detail_kategori` (`id`, `film_id`, `kategori_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_pemain`
+--
+
+CREATE TABLE `detail_pemain` (
+  `id` int(11) NOT NULL,
+  `film_id` int(11) DEFAULT NULL,
+  `pemain_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `film`
 --
 
@@ -66,7 +78,6 @@ CREATE TABLE `film` (
   `sinopsis` text NOT NULL,
   `durasi` varchar(255) NOT NULL,
   `tahun_rillis` varchar(255) NOT NULL,
-  `pemain_id` int(11) DEFAULT NULL,
   `rating` varchar(255) NOT NULL,
   `gambar` varchar(225) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -75,12 +86,12 @@ CREATE TABLE `film` (
 -- Dumping data for table `film`
 --
 
-INSERT INTO `film` (`id`, `nama_film`, `sinopsis`, `durasi`, `tahun_rillis`, `pemain_id`, `rating`, `gambar`) VALUES
-(1, 'John Wick: Chapter 4', 'Dengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\nDengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\n.', '169 min', '2023', 1, '8', 'https://melongmovie.site/wp-content/uploads/2023/03/1680072357-2783-vZloFAK7NmvMGKE7VkF5UHaz0I.jpg'),
-(2, 'Fast X', 'Selama banyak misi dan melawan rintangan yang mustahil, Dom Toretto dan keluarganya telah mengakali, mengalahkan, dan mengalahkan setiap musuh di jalan mereka. Sekarang, mereka menghadapi lawan paling mematikan yang pernah mereka hadapi: Ancaman mengerikan yang muncul dari bayang-bayang masa lalu yang dipicu oleh dendam darah, dan yang bertekad untuk menghancurkan keluarga ini dan menghancurkan segalanya—dan semua orang—yang dicintai Dom, selamanya. .\r\n', '142 min', '2023', 2, '8', 'https://melongmovie.site/wp-content/uploads/2023/05/1684749882-6839-1E5baAaEse26fej7uHcjOgEE2t2.jpg'),
-(3, 'One Piece: Stampede', 'One Piece: Stampede adalah film yang berdiri sendiri yang merayakan ulang tahun ke-20 anime dan mengambil tempat di luar kanon serial TV “One Piece”. Monkey D. Luffy dan kru bajak laut Topi Jerami diundang ke Festival Bajak Laut besar-besaran yang membawa banyak karakter paling ikonik dari seluruh waralaba untuk berpartisipasi dalam persaingan dengan Topi Jerami untuk menemukan harta karun Roger. Itu juga mengadu Topi Jerami melawan musuh baru bernama Bullet, mantan anggota kru Roger.', '101 min', '2019', 3, '9', 'https://image.tmdb.org/t/p/w300/4E2lyUGLEr3yH4q6kJxPkQUhX7n.jpg'),
-(4, 'Love Again', 'Mira Ray, berurusan dengan kehilangan tunangannya, mengirimkan serangkaian teks romantis ke nomor ponsel lamanya… tanpa menyadari bahwa nomor tersebut telah dipindahkan ke telepon kantor baru Rob Burns. Seorang jurnalis, Rob terpikat oleh kejujuran dalam teks pengakuan yang indah. Ketika dia ditugaskan untuk menulis profil megabintang Céline Dion, dia meminta bantuannya untuk menemukan cara bertemu Mira secara langsung dan memenangkan hatinya.\r\n', '104 min', '2023', 4, '7', 'https://melongmovie.site/wp-content/uploads/2023/05/1685108440-5884-yGEiqgynu453hMHxOZYtZlisv95.jpg'),
-(5, 'The Pope’s Exorcist', 'Pastor Gabriele Amorth, Kepala Exorcist Vatikan, menyelidiki kepemilikan menakutkan seorang anak laki-laki dan akhirnya mengungkap konspirasi berusia berabad-abad yang berusaha keras disembunyikan oleh Vatikan.\r\n', '103 min', '2023', 5, '8', 'https://melongmovie.site/wp-content/uploads/2023/05/1683179514-7970-9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg');
+INSERT INTO `film` (`id`, `nama_film`, `sinopsis`, `durasi`, `tahun_rillis`, `rating`, `gambar`) VALUES
+(1, 'John Wick: Chapter 4', 'Dengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\nDengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\n.', '169 min', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/03/1680072357-2783-vZloFAK7NmvMGKE7VkF5UHaz0I.jpg'),
+(2, 'Fast X', 'Selama banyak misi dan melawan rintangan yang mustahil, Dom Toretto dan keluarganya telah mengakali, mengalahkan, dan mengalahkan setiap musuh di jalan mereka. Sekarang, mereka menghadapi lawan paling mematikan yang pernah mereka hadapi: Ancaman mengerikan yang muncul dari bayang-bayang masa lalu yang dipicu oleh dendam darah, dan yang bertekad untuk menghancurkan keluarga ini dan menghancurkan segalanya—dan semua orang—yang dicintai Dom, selamanya. .\r\n', '142 min', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/05/1684749882-6839-1E5baAaEse26fej7uHcjOgEE2t2.jpg'),
+(3, 'One Piece: Stampede', 'One Piece: Stampede adalah film yang berdiri sendiri yang merayakan ulang tahun ke-20 anime dan mengambil tempat di luar kanon serial TV “One Piece”. Monkey D. Luffy dan kru bajak laut Topi Jerami diundang ke Festival Bajak Laut besar-besaran yang membawa banyak karakter paling ikonik dari seluruh waralaba untuk berpartisipasi dalam persaingan dengan Topi Jerami untuk menemukan harta karun Roger. Itu juga mengadu Topi Jerami melawan musuh baru bernama Bullet, mantan anggota kru Roger.', '101 min', '2019', '9', 'https://image.tmdb.org/t/p/w300/4E2lyUGLEr3yH4q6kJxPkQUhX7n.jpg'),
+(4, 'Love Again', 'Mira Ray, berurusan dengan kehilangan tunangannya, mengirimkan serangkaian teks romantis ke nomor ponsel lamanya… tanpa menyadari bahwa nomor tersebut telah dipindahkan ke telepon kantor baru Rob Burns. Seorang jurnalis, Rob terpikat oleh kejujuran dalam teks pengakuan yang indah. Ketika dia ditugaskan untuk menulis profil megabintang Céline Dion, dia meminta bantuannya untuk menemukan cara bertemu Mira secara langsung dan memenangkan hatinya.\r\n', '104 min', '2023', '7', 'https://melongmovie.site/wp-content/uploads/2023/05/1685108440-5884-yGEiqgynu453hMHxOZYtZlisv95.jpg'),
+(5, 'The Pope’s Exorcist', 'Pastor Gabriele Amorth, Kepala Exorcist Vatikan, menyelidiki kepemilikan menakutkan seorang anak laki-laki dan akhirnya mengungkap konspirasi berusia berabad-abad yang berusaha keras disembunyikan oleh Vatikan.\r\n', '103 min', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/05/1683179514-7970-9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg');
 
 -- --------------------------------------------------------
 
@@ -146,19 +157,22 @@ INSERT INTO `komentar` (`id`, `nama_komentar`, `isi_komentar`, `film_id`) VALUES
 
 CREATE TABLE `pemain` (
   `id` int(11) NOT NULL,
-  `nama_pemain` varchar(255) NOT NULL
+  `nama_pemain` varchar(255) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `negara` varchar(255) NOT NULL,
+  `foto` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pemain`
 --
 
-INSERT INTO `pemain` (`id`, `nama_pemain`) VALUES
-(1, 'Bill Skarsgård, Clancy Brown, Donnie Yen, Hiroyuki Sanada, Ian McShane, Keanu Reeves, Lance Reddick, Laurence Fishburne, Rina Sawayama, Shamier Anderson'),
-(2, 'Jason Momoa, John Cena, Jordana Brewster, Ludacris, Michelle Rodriguez, Nathalie Emmanuel, Scott Eastwood, Sung Kang, Tyrese Gibson, Vin Diesel'),
-(3, 'Akemi Okamura, Chō, Hiroaki Hirata, Ikue Ôtani, Kappei Yamaguchi, Kazuki Yao, Kazuya Nakai, Mayumi Tanaka, Tsutomu Isobe, Yuriko Yamaguchi'),
-(4, 'Celia Imrie, Céline Dion, Lydia West, Nick Jonas, Omid Djalili, Priyanka Chopra Jonas, Russell Tovey, Sam Heughan, Sofia Barclay, Steve Oram'),
-(5, 'Alex Essoe, Bianca Bardoe, Cornell John, Daniel Zovatto, Franco Nero, Laurel Marsden, Peter DeSouza-Feighoney, Russell Crowe, Ryan O\'Grady, Santi Bayón');
+INSERT INTO `pemain` (`id`, `nama_pemain`, `tanggal_lahir`, `negara`, `foto`) VALUES
+(6, 'Akemi Okamura', '1969-03-12', 'Japan', ''),
+(7, 'Keanu Reeves', '1964-09-02', 'Libanon', ''),
+(8, 'Joseph Jason', '1979-08-01', 'Amerika', ''),
+(9, 'Celia Imrie', '1952-07-15', 'Britinia Raya', 'https://m.media-amazon.com/images/M/MV5BOGFiNTNmNTQtODVjZS00YTQ0LWJmZjMtMWFmZTdjNWY0MGEyXkEyXkFqcGdeQXVyNTQ0NDA1OTA@._V1_.jpg'),
+(10, 'Alex Essoe', '1992-03-09', 'Arab saudi', '');
 
 --
 -- Indexes for dumped tables
@@ -173,11 +187,18 @@ ALTER TABLE `detail_kategori`
   ADD KEY `kategori_id` (`kategori_id`);
 
 --
+-- Indexes for table `detail_pemain`
+--
+ALTER TABLE `detail_pemain`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `film_id` (`film_id`),
+  ADD KEY `pemain_id` (`pemain_id`);
+
+--
 -- Indexes for table `film`
 --
 ALTER TABLE `film`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pemain_id` (`pemain_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `kategori`
@@ -209,6 +230,12 @@ ALTER TABLE `detail_kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `detail_pemain`
+--
+ALTER TABLE `detail_pemain`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `film`
 --
 ALTER TABLE `film`
@@ -230,7 +257,7 @@ ALTER TABLE `komentar`
 -- AUTO_INCREMENT for table `pemain`
 --
 ALTER TABLE `pemain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -244,10 +271,11 @@ ALTER TABLE `detail_kategori`
   ADD CONSTRAINT `detail_kategori_ibfk_2` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id`);
 
 --
--- Constraints for table `film`
+-- Constraints for table `detail_pemain`
 --
-ALTER TABLE `film`
-  ADD CONSTRAINT `film_ibfk_2` FOREIGN KEY (`pemain_id`) REFERENCES `pemain` (`id`);
+ALTER TABLE `detail_pemain`
+  ADD CONSTRAINT `detail_pemain_ibfk_1` FOREIGN KEY (`film_id`) REFERENCES `film` (`id`),
+  ADD CONSTRAINT `detail_pemain_ibfk_2` FOREIGN KEY (`pemain_id`) REFERENCES `pemain` (`id`);
 
 --
 -- Constraints for table `komentar`
