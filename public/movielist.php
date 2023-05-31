@@ -185,7 +185,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 							</div>
 							<div class="mv-item-infor">
 								<h6><a href="#"><?php echo $data["nama_film"]; ?></a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span><?php echo $data["rating"]; ?></span>10 </p>
+								<p class="rate"><i class="ion-android-star"></i><span><?php echo $data["rating"]; ?></span>/10 </p>
 							</div>
 						</div>
                         <?php endwhile ?>
