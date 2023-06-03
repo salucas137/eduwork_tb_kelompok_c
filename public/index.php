@@ -28,15 +28,15 @@
 	<meta name="format-detection" content="telephone-no">
 
 	<!-- CSS files -->
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/plugins.css">
+	<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
 <body>
 	<!--preloading-->
   <div id="preloader">
-    <img class="logo" src="images/logo.png" alt="" width="240" height="58">
+    <img class="logo" src="../images/logo.png" alt="" width="240" height="58">
     <div id="status">
         <span></span>
         <span></span>
@@ -62,7 +62,7 @@
 							<span></span>
 						</div>
 					</div>
-					<a href="index-2.html"><img class="logo" src="images/logo.png" alt="" width="240" height="58"></a>
+					<a href="index-2.html"><img class="logo" src="../images/logo.png" alt="" width="240" height="58"></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -480,10 +480,10 @@
 	</footer>
 	<!-- end of footer section-->
 
-	<script src="js/jquery.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/plugins2.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/plugins.js"></script>
+	<script src="../js/plugins2.js"></script>
+	<script src="../js/custom.js"></script>
 </body>
 
 <!-- index14:58-->
