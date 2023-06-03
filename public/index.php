@@ -1,4 +1,4 @@
-<?php include "admin/dbconnect.php" ?>
+<?php include "../admin/dbconnect.php" ?>
 
 <!DOCTYPE html>
 <!--[if IE 7]>
@@ -76,7 +76,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="moviegridfw.html" class="btn btn-default">
+							<a href="movielist.php" class="btn btn-default">
 								movies</i>
 							</a>
 						</li>
@@ -426,7 +426,7 @@
 		<div class="container">
 			<div class="flex-parent-ft">
 				<div class="flex-child-ft item1">
-					<a href="index-2.html"><img class="logo" src="images/logo.png" alt="" width="240"></a>
+					<a href="index-2.html"><img class="logo" src="../images/logo.png" alt="" width="240"></a>
 					<p>5th Avenue st, manhattan<br>
 						New York, NY 10001</p>
 					<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
