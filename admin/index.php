@@ -1,24 +1,18 @@
 <?php
 
-include 'dbconnect.php';?>
-
+include 'connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css" />
-
-    <title>Dashboard - Admin Dashboard</title>
+    <title>Dashboard</title>
     
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/main/app-dark.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
     
@@ -33,7 +27,7 @@ include 'dbconnect.php';?>
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a>
+                <a href="dashboard.php"><img src="assets/images/logo/logo.png" alt="Logo" srcset="" width="130"></a>
             </div>
             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2" opacity=".3"></path><g transform="translate(-210 -1)"><path d="M220.5 2.5v2m6.5.5l-1.5 1.5"></path><circle cx="220.5" cy="11.5" r="4"></circle><path d="m214 5l1.5 1.5m5 14v-2m6.5-.5l-1.5-1.5M214 18l1.5-1.5m-4-5h2m14 0h2"></path></g></g></svg>
@@ -54,12 +48,21 @@ include 'dbconnect.php';?>
             
             <li
                 class="sidebar-item active ">
-                <a href="index.php" class='sidebar-link'>
+                <a href="dashboard.php" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            
+            <li
+                class="sidebar-item  ">
+                <a href="film.php" class='sidebar-link'>
+                    <i class="bi bi-badge-hd-fill"></i>
+                    <span>Film</span>
+                </a>
+            </li>
+                        
+            
             <li
                 class="sidebar-item  ">
                 <a href="pemain.php" class='sidebar-link'>
@@ -70,9 +73,9 @@ include 'dbconnect.php';?>
             
             <li
                 class="sidebar-item  ">
-                <a href="film.php" class='sidebar-link'>
-                    <i class="bi bi-badge-3d-fill"></i>
-                    <span>Film</span>
+                <a href="kategori.php" class='sidebar-link'>
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span>Kategori</span>
                 </a>
             </li>
             
@@ -81,14 +84,6 @@ include 'dbconnect.php';?>
                 <a href="komentar.php" class='sidebar-link'>
                     <i class="bi bi-chat-dots-fill"></i>
                     <span>Komentar</span>
-                </a>
-            </li>
-
-            <li
-                class="sidebar-item  ">
-                <a href="kategori.php" class='sidebar-link'>
-                    <i class="bi bi-ui-checks-grid"></i>
-                    <span>Kategori</span>
                 </a>
             </li>
         </ul>
@@ -102,151 +97,59 @@ include 'dbconnect.php';?>
                 </a>
             </header>
             
-<div class="page-heading">
-    <h3>Dashboard</h3>
-</div>
-<div class="page-content">
-    <section class="row">
-        <div class="col-12 col-lg-9">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon purple mb-2">
-                                        <i class="iconly-boldShow"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Film Views</h6>
-                                    <h6 class="font-extrabold mb-0">100.000</h6>
-                                </div>
-                            </div>
-                        </div>
+    <div class="page-heading">
+        <h3>Dashboard</h3>
+    </div>
+        <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <a href="film.php">
+                        <div class="cardName">Film</div>
                     </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon blue mb-2">
-                                        <i class="iconly-boldChat"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Comentar</h6>
-                                    <h6 class="font-extrabold mb-0">110</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon green mb-2">
-                                        <i class="iconly-boldStar"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Rating</h6>
-                                    <h6 class="font-extrabold mb-0">100</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                    <div class="stats-icon red mb-2">
-                                        <i class="iconly-boldBookmark"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">Saved Post</h6>
-                                    <h6 class="font-extrabold mb-0">115</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="page-heading">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Datatable</h4>
-                        </div>
-    <section class="section">
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-striped" id="table1">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Film</th>
-                            <th>Sinopsis</th>
-                            <th>Durasi</th>
-                            <th>Tahun Rillis</th>
-                            <th>Rating</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            include "dbconnect.php";
-                            $select_film = $conn->prepare("SELECT * FROM `film`");
-                            $select_film->execute();
-                            if($select_film->rowCount() > 0){
-                                $no=1;
-                            while($fetch_film = $select_film->fetch(PDO::FETCH_ASSOC)){ 
-                        ?>
-                        <tr>
-                            <td><?php echo $no ?></td>
-                            <td><?php echo $fetch_film["nama_film"]; ?></td>
-                            <td><?php echo $fetch_film["sinopsis"]; ?></td>
-                            <td><?php echo $fetch_film["durasi"]; ?></td>
-                            <td><?php echo $fetch_film["durasi"]; ?></td>
-                            <td><?php echo $fetch_film["tahun_rillis"]; ?></td>
-                            <td><?php echo $fetch_film["rating"]; ?></td>
-                            <td>
-                            <div class="flex-btn">
-                                <a href="update_film.php?update=<?= $fetch_film['id']; ?>" class="option-btn">update</a>
-                                <a href="film.php?delete=<?= $fetch_film['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
-                            </div>
-                            </td>
-                        </tr>
-            <?php 
-                $no++;
-            }
-        } else{
-         echo '<p class="empty">no products added yet!</p>';
-      }
-        ?>
-        </tbody>
-                </table>
-            </div>
-        <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-       </script>
 
-        </div>
-    </section>
-</div>
+                    <div class="iconBx">
+                        <i class="bi bi-badge-hd-fill"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <a href="pemain.php">
+                        <div class="cardName">Pemain</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <a href="kategori.php">
+                        <div class="cardName">Kategori</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <a href="komentar.php">
+                        <div class="cardName">Comments</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="bi bi-chat-dots-fill"></i>
+                    </div>
+                </div>
+            </div>
 
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/app.js"></script>
-    
+    <script src="assets/js/main.js"></script>
+
 <!-- Need: Apexcharts -->
 <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
 <script src="assets/js/pages/dashboard.js"></script>

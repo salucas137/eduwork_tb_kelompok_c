@@ -1,19 +1,23 @@
+<?php
+include('connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Datatable - Admin Dashboard</title>
+    <title>Table Datatable</title>
     
     <link rel="stylesheet" href="assets/css/main/app.css">
     <link rel="stylesheet" href="assets/css/main/app-dark.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
     
-<link rel="stylesheet" href="assets/css/pages/fontawesome.css">
-<link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
-<link rel="stylesheet" href="assets/css/pages/datatables.css">
+    <link rel="stylesheet" href="assets/css/pages/fontawesome.css">
+    <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="assets/css/pages/datatables.css">
 
 </head>
 
@@ -24,7 +28,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" srcset=""></a>
+                <a href="index.php"><img src="assets/images/logo/logo.png" alt="Logo" srcset="" width="130"></a>
             </div>
             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 14.5c2.219 0 4-1.763 4-3.982a4.003 4.003 0 0 0-4-4.018c-2.219 0-4 1.781-4 4c0 2.219 1.781 4 4 4zM4.136 4.136L5.55 5.55m9.9 9.9l1.414 1.414M1.5 10.5h2m14 0h2M4.135 16.863L5.55 15.45m9.899-9.9l1.414-1.415M10.5 19.5v-2m0-14v-2" opacity=".3"></path><g transform="translate(-210 -1)"><path d="M220.5 2.5v2m6.5.5l-1.5 1.5"></path><circle cx="220.5" cy="11.5" r="4"></circle><path d="m214 5l1.5 1.5m5 14v-2m6.5-.5l-1.5-1.5M214 18l1.5-1.5m-4-5h2m14 0h2"></path></g></g></svg>
@@ -44,15 +48,24 @@
             <li class="sidebar-title">Menu</li>
             
             <li
-                class="sidebar-item  ">
+                class="sidebar-item ">
                 <a href="index.php" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            
             <li
-                class="sidebar-item  ">
+                class="sidebar-item ">
+                <a href="film.php" class='sidebar-link'>
+                    <i class="bi bi-badge-hd-fill"></i>
+                    <span>Film</span>
+                </a>
+            </li>
+                        
+            
+            <li
+                class="sidebar-item ">
                 <a href="pemain.php" class='sidebar-link'>
                     <i class="bi bi-people-fill"></i>
                     <span>Pemain</span>
@@ -60,26 +73,18 @@
             </li>
             
             <li
-                class="sidebar-item  ">
-                <a href="film.php" class='sidebar-link'>
-                    <i class="bi bi-badge-3d-fill"></i>
-                    <span>Film</span>
+                class="sidebar-item ">
+                <a href="kategori.php" class='sidebar-link'>
+                    <i class="bi bi-grid-1x2-fill"></i>
+                    <span>Kategori</span>
                 </a>
             </li>
             
             <li
-                class="sidebar-item  ">
+                class="sidebar-item active">
                 <a href="komentar.php" class='sidebar-link'>
                     <i class="bi bi-chat-dots-fill"></i>
                     <span>Komentar</span>
-                </a>
-            </li>
-
-            <li
-                class="sidebar-item  ">
-                <a href="kategori.php" class='sidebar-link'>
-                    <i class="bi bi-ui-checks-grid"></i>
-                    <span>Kategori</span>
                 </a>
             </li>
             
@@ -103,7 +108,7 @@
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                         <li class="breadcrumb-item active" aria-current="page">DataTable Komentar</li>
                     </ol>
                 </nav>
@@ -115,7 +120,9 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Jquery Datatable
+            <div class="col-md-10"><br>
+                <a href="tambah.php" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Tambah</a>
+            </div>
             </div>
             <div class="card-body">
                 <table class="table" id="table1">
@@ -129,30 +136,27 @@
                     </thead>
                     <tbody>
                     <?php
-                            include "dbconnect.php";
-                            $select_film = $conn->prepare("SELECT * FROM `komentar`");
-                            $select_film->execute();
-                            if($select_film->rowCount() > 0){
-                                $no=1;
-                            while($fetch_film = $select_film->fetch(PDO::FETCH_ASSOC)){ 
-                        ?>
-                        <tr>
-                            <td><?php echo $no ?></td>
-                            <td><?php echo $fetch_film["nama_komentar"]; ?></td>
-                            <td><?php echo $fetch_film["isi_komentar"]; ?></td>
-                            <td>
-                            <div class="flex-btn">
-                                <a href="update_film.php?update=<?= $fetch_film['id']; ?>" class="option-btn">update</a>
-                                <a href="film.php?delete=<?= $fetch_film['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
-                            </div>
-                            </td>
-                        </tr>
+                    include "connect.php";
+                    $query = mysqli_query($conn ,"SELECT * FROM komentar");
+                    ?>
+                    
+                    <?php if(mysqli_num_rows($query)>0){ 
+                        $no =1;
+                    while($data=mysqli_fetch_array($query)){
+                    ?>
+                    <tr>
+                        <td><?php echo $no ?></td>
+                        <td><?php echo $data["nama_komentar"]; ?></td>
+                        <td><?php echo $data["isi_komentar"]; ?></td>
+                        <td>
+                            <a href="proses_hapus.php?id=<?php echo $data["id"]; ?>" class="btn btn-primary custom"> Terima </a> <br><br>
+                            <a href="komentar.php?id=<?php echo $data["id"]; ?>" class="btn btn-danger custom"> Hapus </a>
+                        </td>
+                    </tr>
             <?php 
                 $no++;
             }
-        } else{
-         echo '<p class="empty">no products added yet!</p>';
-      }
+        }
         ?>
                     </tbody>
                 </table>
@@ -162,8 +166,7 @@
     </section>
     <!-- Basic Tables end -->
 </div>
-        </div>
-    </div>
+
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/app.js"></script>
     
