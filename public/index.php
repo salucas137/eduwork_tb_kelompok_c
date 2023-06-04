@@ -14,7 +14,7 @@
 
 <head>
 	<!-- Basic need -->
-	<title>Movie Verse</title>
+	<title>MovieVerse</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -42,6 +42,7 @@
         <span></span>
     </div>
 </div>
+
 	<!--end of preloading-->
 	<!--login form popup-->
 	<!--end of login form popup-->
@@ -62,7 +63,7 @@
 							<span></span>
 						</div>
 					</div>
-					<a href="index-2.html"><img class="logo" src="../images/logo.png" alt="" width="240" height="58"></a>
+					<a href="index.php"><img class="logo" src="../images/logo.png" alt="" width="240" height="58"></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -80,11 +81,16 @@
 								movies</i>
 							</a>
 						</li>
-					</ul>
-					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li><a href="#">Help</a></li>
-						<li class="loginLink"><a href="#">LOG In</a></li>
-						<li class="btn signupLink"><a href="#">sign up</a></li>
+						<li>
+							<a href="celebritylist.php" class="btn btn-default">
+								Celebrities</i>
+							</a>
+						</li>
+						<li>
+							<a href="about.php" class="btn btn-default">
+								About</i>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -114,7 +120,15 @@
 				</div>
 				<div class="slick-multiItemSlider">
 					<?php
-					$query = mysqli_query($conn ,"SELECT * FROM film"); 
+					$limit = 12; 
+                    $offsetQuery = "";
+                    if(isset($_GET["page"])){
+                    $offset = ($_GET["page"]*$limit) - $limit;
+
+                    $offsetQuery = "offset $offset";
+                    }
+
+					$query = mysqli_query($conn ,"SELECT * FROM film LIMIT $limit $offsetQuery"); 
           $count = mysqli_num_rows($query);
 					if($count>0){ 
               while($data=mysqli_fetch_array($query)){
@@ -122,11 +136,21 @@
 					
 					<div class="movie-item">
 						<div class="mv-img">
-							<a href="#"><img src="<?php echo $data["gambar"]; ?>" alt="" width="285" height="437"></a>
+							<a href=""><img src="<?php echo $data["gambar"]; ?>" alt="" width="285" height="437"></a>
 						</div>
 						<div class="title-in">
 							<div class="cate">
-								<span class="blue"><a href="#">Action</a></span> <span class="orange"><a href="#">Crime</a></span> <span class="green"><a href="#">Thriller</a></span>
+								<?php
+								$querykategori = mysqli_query($conn ,"SELECT * FROM detail_kategori JOIN kategori on detail_kategori.kategori_id = kategori.id WHERE film_id = $data[id]"); 
+														while ($datakategori = mysqli_fetch_array($querykategori)) {
+									?>
+									<span class="blue"><a href="#"><?php echo $datakategori['nama_kategori'] ?></a></span> 
+									
+									
+									<?php 
+								}
+								?>
+								
 							</div>
 							<h6><a href="#"><span class="orange"><a href="#"><?php echo $data['nama_film'] ?></a></span></a></h6>
 							<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
@@ -146,8 +170,8 @@
 			<div class="row ipad-width">
 				<div class="col-md-8">
 					<div class="title-hd">
-						<h2>in theater</h2>
-						<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+						<h2>Movies</h2>
+						<a href="movielist.php" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
 					</div>
 					<div class="tabs">
 						<ul class="tab-links">
@@ -175,8 +199,9 @@
 													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
+
 												<div class="title-in">
 													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
 													<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
@@ -205,7 +230,7 @@
 													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 												<div class="title-in">
 													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
@@ -223,152 +248,60 @@
 							<div id="tab3" class="tab">
 								<div class="row">
 									<div class="slick-multiItem">
+										<?php
+					$query = mysqli_query($conn ,"SELECT * FROM film"); 
+          $count = mysqli_num_rows($query);
+					if($count>0){ 
+              while($data=mysqli_fetch_array($query)){
+          ?>
 										<div class="slide-it">
 											<div class="movie-item">
 												<div class="mv-img">
-													<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 												<div class="title-in">
-													<h6><a href="#">Interstellar</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
+													<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
 												</div>
 											</div>
 										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item2.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">The revenant</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">Die hard</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item4.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">The walk</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">Die hard</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
+										<?php 
+              }
+            }
+          ?>
 									</div>
 								</div>
 							</div>
 							<div id="tab4" class="tab">
 								<div class="row">
 									<div class="slick-multiItem">
+										<?php
+					$query = mysqli_query($conn ,"SELECT * FROM film"); 
+          $count = mysqli_num_rows($query);
+					if($count>0){ 
+              while($data=mysqli_fetch_array($query)){
+          ?>
 										<div class="slide-it">
 											<div class="movie-item">
 												<div class="mv-img">
-													<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 												<div class="title-in">
-													<h6><a href="#">Interstellar</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
+													<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
 												</div>
 											</div>
 										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">The revenant</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item7.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">Die hard</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item8.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">The walk</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#">Die hard</a></h6>
-													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
-												</div>
-											</div>
-										</div>
+										<?php 
+              }
+            }
+          ?>
 									</div>
 								</div>
 							</div>
@@ -379,39 +312,40 @@
 				<div class="col-md-4">
 					<div class="sidebar">
 						<div class="ads">
-							<img src="images/uploads/ads1.png" alt="" width="336" height="296">
+							<img src="../images/uploads/ads1.png" alt="" width="336" height="296">
 						</div>
+						
+
 						<div class="celebrities">
 							<h4 class="sb-title">Spotlight Celebrities</h4>
+							<?php
+							$limit = 4; 
+                    $offsetQuery = "";
+                    if(isset($_GET["page"])){
+                    $offset = ($_GET["page"]*$limit) - $limit;
+
+                    $offsetQuery = "offset $offset";
+                    }
+
+					$query = mysqli_query($conn ,"SELECT * FROM pemain ORDER BY nama_pemain ASC LIMIT $limit $offsetQuery"); 
+          $count = mysqli_num_rows($query);
+					if($count>0){ 
+              while($data=mysqli_fetch_array($query)){
+          ?>
 							<div class="celeb-item">
-								<a href="#"><img src="images/uploads/ava1.jpg" alt="" width="70" height="70"></a>
+								<a href="celebrity.php?celebrityid=<?= $data['id'] ?>"><img src="<?php echo $data["foto"]; ?>" alt="" width="70" height="70"></a>
 								<div class="celeb-author">
-									<h6><a href="#">Samuel N. Jack</a></h6>
-									<span>Actor</span>
+									<h6><a href="celebrity.php?celebrityid=<?= $data['id'] ?>"><?php echo $data['nama_pemain'] ?></a></h6>
+									<span><?php echo $data['negara'] ?></span>
 								</div>
 							</div>
-							<div class="celeb-item">
-								<a href="#"><img src="images/uploads/ava2.jpg" alt="" width="70" height="70"></a>
-								<div class="celeb-author">
-									<h6><a href="#">Benjamin Carroll</a></h6>
-									<span>Actor</span>
-								</div>
-							</div>
-							<div class="celeb-item">
-								<a href="#"><img src="images/uploads/ava3.jpg" alt="" width="70" height="70"></a>
-								<div class="celeb-author">
-									<h6><a href="#">Beverly Griffin</a></h6>
-									<span>Actor</span>
-								</div>
-							</div>
-							<div class="celeb-item">
-								<a href="#"><img src="images/uploads/ava4.jpg" alt="" width="70" height="70"></a>
-								<div class="celeb-author">
-									<h6><a href="#">Justin Weaver</a></h6>
-									<span>Actor</span>
-								</div>
-							</div>
-							<a href="#" class="btn">See all celebrities<i class="ion-ios-arrow-right"></i></a>
+
+							<?php 
+              }
+            }
+          ?>
+							
+							<a href="celebritylist.php" class="btn">See all celebrities<i class="ion-ios-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -471,7 +405,7 @@
 		</div>
 		<div class="ft-copyright">
 			<div class="ft-left">
-				<p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
+				<p><a target="_blank" href="https://www.templateshub.net">Kelompok C</a></p>
 			</div>
 			<div class="backtotop">
 				<p><a href="#" id="back-to-top">Back to top <i class="ion-ios-arrow-thin-up"></i></a></p>
