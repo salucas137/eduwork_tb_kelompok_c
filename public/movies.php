@@ -189,15 +189,6 @@ include '../admin/dbconnect.php';
 <div class="page-single movie-single movie_single">
 
 <?php
-$moviesid = $_GET['moviesid'];
-	// $query = mysqli_query($conn ,"SELECT * FROM film WHERE film.id = '2'");
-
-    // while ($film = mysqli_fetch_array($query)) : ?>
-<?php $query = mysqli_query($conn, "select * from film where id='$moviesid'");
-   $film = mysqli_fetch_array($query) ?>
-	$query = mysqli_query($conn ,"SELECT * FROM film WHERE film.id = '1'");
-
-    while ($film = mysqli_fetch_array($query)) : ?>
 $moviesid = $_GET['movieid']; ?>
 <?php
 $query = mysqli_query($conn, "SELECT *, film.nama_film, kategori.nama_kategori, pemain.nama_pemain, pemain.foto, komentar.isi_komentar, komentar.nama_komentar
@@ -366,7 +357,7 @@ while ($row = mysqli_fetch_assoc($query)) {
 										<div class="mv-user-review-item">
 											<div class="user-infor">
 												<div>
-													<h3>Best Marvel movie in my opinion</h3>
+													<!--<h3>Best Marvel movie in my opinion</h3>
 													<div class="no-star">
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>
@@ -378,9 +369,9 @@ while ($row = mysqli_fetch_assoc($query)) {
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star last"></i>
-													</div>
+													</div>-->
 													<p class="time">
-														17 December 2016 by <a href="#"> <?= $film["nama_komentar"]; ?></a>
+														<a href="#"> <?= $film["nama_komentar"]; ?></a>
 													</p>
 												</div>
 											</div>
