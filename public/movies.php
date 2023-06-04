@@ -191,7 +191,7 @@ include '../admin/dbconnect.php';
 <?php
 $moviesid = $_GET['movieid']; ?>
 <?php
-$query = mysqli_query($conn, "SELECT *, film.nama_film, kategori.nama_kategori, pemain.nama_pemain, pemain.foto, komentar.isi_komentar, komentar.nama_komentar
+$query = mysqli_query($conn, "SELECT *, film.nama_film, kategori.nama_kategori, pemain.nama_pemain, pemain.foto, komentar.isi_komentar, komentar.nama_komentar, komentar.judul_komentar, komentar.rating_komentar, komentar.tanggal_komentar
                               FROM film 
                               JOIN detail_kategori ON film.id = detail_kategori.film_id 
                               JOIN kategori ON kategori.id = detail_kategori.kategori_id 
@@ -203,11 +203,23 @@ $film = mysqli_fetch_assoc($query);
 
 $categories = array();
 $actors = array();
+$reviews = array();
 
+// Fetch all reviews and store them in an array
 while ($row = mysqli_fetch_assoc($query)) {
     $categories[] = $row['nama_kategori'];
     $actors[] = $row['nama_pemain'];
+	$reviews[] = array(
+        'review_title' => $row['judul_komentar'],
+        'review_content' => $row['isi_komentar'],
+        'review_rating' => $row['rating_komentar'],
+        'review_date' => $row['tanggal_komentar'],
+        'reviewer_name' => $row['nama_komentar']
+    );
 }
+
+$reviews = array_unique($reviews, SORT_REGULAR);
+
 ?>
 
 	<div class="container">
@@ -290,7 +302,7 @@ while ($row = mysqli_fetch_assoc($query)) {
            													$actorQuery = mysqli_query($conn, "SELECT foto FROM pemain WHERE nama_pemain = '$actor'");
             												$actorData = mysqli_fetch_assoc($actorQuery);
             												$actorImage = $actorData['foto'];
-        														?>
+        											?>
         												<img src="<?php echo $actorImage; ?>" alt="" style="width: 40px;">
 													</div>
 													<p><?php echo $actor; ?></p>
@@ -310,10 +322,8 @@ while ($row = mysqli_fetch_assoc($query)) {
 						            			<p><a href="#">Joss Whedon,</a> <a href="#">Stan Lee</a></p>
 						            		</div>-->
 						            		<div class="sb-it">
-						            			<h6>Genres:</h6>
-												<?php foreach (array_unique($categories) as $category): ?>
-													<span style="color: gray;"><?php echo $category; ?></span>
-													<?php endforeach; ?>
+						            			<h6>Genres:</h6>						
+													<span style="color: gray;"><?= implode(', ', array_unique($categories)); ?></span>
 						            		</div>
 						            		<!--<div class="sb-it">
 						            			<h6>Release Date:</h6>
@@ -354,11 +364,14 @@ while ($row = mysqli_fetch_assoc($query)) {
 												<option value="date">Release date Ascending</option>
 											</select>
 										</div>-->
+										<?php foreach ($reviews as $review): ?>		
 										<div class="mv-user-review-item">
 											<div class="user-infor">
 												<div>
-													<!--<h3>Best Marvel movie in my opinion</h3>
+													<h3><?=  $review['review_title']; ?></h3>
 													<div class="no-star">
+														<p><?=  $review['review_rating']; ?> / 10</p>
+														<!--<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>
@@ -367,16 +380,16 @@ while ($row = mysqli_fetch_assoc($query)) {
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>
 														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star last"></i>
-													</div>-->
+														<i class="ion-android-star last"></i>-->
+													</div>
 													<p class="time">
-														<a href="#"> <?= $film["nama_komentar"]; ?></a>
+													<?= $review['review_date']; ?><a href="#"> <?= $review['reviewer_name']; ?></a>
 													</p>
 												</div>
 											</div>
-											<p><?= $film["isi_komentar"]; ?></p>
+											<p><?= $review['review_content']; ?></p>
 										</div>
+										<?php endforeach; ?>
 										
 										<!--<div class="topbar-filter">
 											<label>Reviews per page:</label>
