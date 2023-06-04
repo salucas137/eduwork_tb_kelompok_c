@@ -151,7 +151,7 @@ include '../admin/dbconnect.php';
 								Home</a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default" href="#">
+							<a class="btn btn-default" href="movielist.php">
 								movies
 							</a>
 						</li>
@@ -189,9 +189,32 @@ include '../admin/dbconnect.php';
 <div class="page-single movie-single movie_single">
 
 <?php
+<<<<<<< Updated upstream
 	$query = mysqli_query($conn ,"SELECT * FROM film WHERE film.id = '1'");
 
     while ($film = mysqli_fetch_array($query)) : ?>
+=======
+$moviesid = $_GET['movieid']; ?>
+<?php
+$query = mysqli_query($conn, "SELECT *, film.nama_film, kategori.nama_kategori, pemain.nama_pemain, pemain.foto, komentar.isi_komentar, komentar.nama_komentar
+                              FROM film 
+                              JOIN detail_kategori ON film.id = detail_kategori.film_id 
+                              JOIN kategori ON kategori.id = detail_kategori.kategori_id 
+                              JOIN detail_pemain ON film.id = detail_pemain.film_id
+                              JOIN pemain ON pemain.id = detail_pemain.pemain_id
+                              LEFT JOIN komentar ON film.id = komentar.film_id
+                              WHERE film.id='$moviesid'");
+$film = mysqli_fetch_assoc($query);
+
+$categories = array();
+$actors = array();
+
+while ($row = mysqli_fetch_assoc($query)) {
+    $categories[] = $row['nama_kategori'];
+    $actors[] = $row['nama_pemain'];
+}
+?>
+>>>>>>> Stashed changes
 
 	<div class="container">
 		<div class="row ipad-width2">
@@ -229,8 +252,8 @@ include '../admin/dbconnect.php';
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span>8.1</span> /10<br>
-								<span class="rv">2 Reviews</span>
+							<p><span><?= $film["rating"]; ?></span> /10<br>
+								<!--<span class="rv">2 Reviews</span>-->
 							</p>
 						</div>
 						<!--<div class="rate-star">
@@ -264,63 +287,22 @@ include '../admin/dbconnect.php';
 												<!--<a href="#" class="time">Full Cast & Crew  <i class="ion-ios-arrow-right"></i></a>-->
 											</div>
 											<!-- movie cast -->
-											<div class="mvcast-item">											
+											<div class="mvcast-item">
+												
+											<?php foreach (array_unique($actors) as $actor): ?>
 												<div class="cast-it">
 													<div class="cast-left">
-														<img src="images/uploads/cast1.jpg" alt="">
-														<a href="#">Robert Downey Jr.</a>
+													<?php
+           													$actorQuery = mysqli_query($conn, "SELECT foto FROM pemain WHERE nama_pemain = '$actor'");
+            												$actorData = mysqli_fetch_assoc($actorQuery);
+            												$actorImage = $actorData['foto'];
+        														?>
+        												<img src="<?php echo $actorImage; ?>" alt="" style="width: 40px;">
 													</div>
-													<p>...  Robert Downey Jr.</p>
+													<p><?php echo $actor; ?></p>
 												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast2.jpg" alt="">
-														<a href="#">Chris Hemsworth</a>
-													</div>
-													<p>...  Thor</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast3.jpg" alt="">
-														<a href="#">Mark Ruffalo</a>
-													</div>
-													<p>...  Bruce Banner/ Hulk</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast4.jpg" alt="">
-														<a href="#">Chris Evans</a>
-													</div>
-													<p>...  Steve Rogers/ Captain America</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast5.jpg" alt="">
-														<a href="#">Scarlett Johansson</a>
-													</div>
-													<p>...  Natasha Romanoff/ Black Widow</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast6.jpg" alt="">
-														<a href="#">Jeremy Renner</a>
-													</div>
-													<p>...  Clint Barton/ Hawkeye</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast7.jpg" alt="">
-														<a href="#">James Spader</a>
-													</div>
-													<p>...  Ultron</p>
-												</div>
-												<div class="cast-it">
-													<div class="cast-left">
-														<img src="images/uploads/cast9.jpg" alt="">
-														<a href="#">Don Cheadle</a>
-													</div>
-													<p>...  James Rhodes/ War Machine</p>
-												</div>
+												<?php endforeach; ?>
+												
 											</div>
 
 						            	</div>
@@ -335,17 +317,19 @@ include '../admin/dbconnect.php';
 						            		</div>-->
 						            		<div class="sb-it">
 						            			<h6>Genres:</h6>
-						            			<p><a href="#">Action, </a> <a href="#"> Sci-Fi,</a> <a href="#">Adventure</a></p>
+												<?php foreach (array_unique($categories) as $category): ?>
+													<span style="color: gray;"><?php echo $category; ?></span>
+													<?php endforeach; ?>
 						            		</div>
-						            		<div class="sb-it">
+						            		<!--<div class="sb-it">
 						            			<h6>Release Date:</h6>
 						            			<p>May 1, 2015 (U.S.A)</p>
-						            		</div>
+						            		</div>-->
 						            		<div class="sb-it">
 						            			<h6>Run Time:</h6>
 						            			<p><?php echo $film["durasi"]; ?></p>
 						            		</div>
-						            		<div class="sb-it">
+						            		<!--<div class="sb-it">
 						            			<h6>Plot Keywords:</h6>
 						            			<p class="tags">
 						            				<span class="time"><a href="#">superhero</a></span>
@@ -354,7 +338,7 @@ include '../admin/dbconnect.php';
 													<span class="time"><a href="#">blockbuster</a></span>
 													<span class="time"><a href="#">final battle</a></span>
 						            			</p>
-						            		</div>
+						            		</div>-->
 						            	</div>
 						            </div>
 						        </div>
@@ -364,7 +348,7 @@ include '../admin/dbconnect.php';
 						            	<div class="rv-hd">
 							            	<a href="#" class="redbtn" style="margin-bottom: 10px;">Write Review</a>
 						            	</div>
-						            	<div class="topbar-filter">
+						            	<!--<div class="topbar-filter">
 											<p>Found <span>56 reviews</span> in total</p>
 											<label>Filter by:</label>
 											<select>
@@ -375,10 +359,9 @@ include '../admin/dbconnect.php';
 												<option value="date">Release date Descending</option>
 												<option value="date">Release date Ascending</option>
 											</select>
-										</div>
+										</div>-->
 										<div class="mv-user-review-item">
 											<div class="user-infor">
-												<img src="images/uploads/userava1.jpg" alt="">
 												<div>
 													<h3>Best Marvel movie in my opinion</h3>
 													<div class="no-star">
@@ -394,128 +377,14 @@ include '../admin/dbconnect.php';
 														<i class="ion-android-star last"></i>
 													</div>
 													<p class="time">
-														17 December 2016 by <a href="#"> hawaiipierson</a>
+														17 December 2016 by <a href="#"> <?= $film["nama_komentar"]; ?></a>
 													</p>
 												</div>
 											</div>
-											<p>This is by far one of my favorite movies from the MCU. The introduction of new Characters both good and bad also makes the movie more exciting. giving the characters more of a back story can also help audiences relate more to different characters better, and it connects a bond between the audience and actors or characters. Having seen the movie three times does not bother me here as it is as thrilling and exciting every time I am watching it. In other words, the movie is by far better than previous movies (and I do love everything Marvel), the plotting is splendid (they really do out do themselves in each film, there are no problems watching it more than once.</p>
+											<p><?= $film["isi_komentar"]; ?></p>
 										</div>
-										<div class="mv-user-review-item">
-											<div class="user-infor">
-												<img src="images/uploads/userava2.jpg" alt="">
-												<div>
-													<h3>Just about as good as the first one!</h3>
-													<div class="no-star">
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-													</div>
-													<p class="time">
-														17 December 2016 by <a href="#"> hawaiipierson</a>
-													</p>
-												</div>
-											</div>
-											<p>Avengers Age of Ultron is an excellent sequel and a worthy MCU title! There are a lot of good and one thing that feels off in my opinion. </p>
-
-											<p>THE GOOD:</p>
-
-											<p>First off the action in this movie is amazing, to buildings crumbling, to evil blue eyed robots tearing stuff up, this movie has the action perfectly handled. And with that action comes visuals. The visuals are really good, even though you can see clearly where they are through the movie, but that doesn't detract from the experience. While all the CGI glory is taking place, there are lovable characters that are in the mix. First off the original characters, Iron Man, Captain America, Thor, Hulk, Black Widow, and Hawkeye, are just as brilliant as they are always. And Joss Whedon fixed my main problem in the first Avengers by putting in more Hawkeye and him more fleshed out. Then there is the new Avengers, Quicksilver, Scarletwich, and Vision, they are pretty cool in my opinion. Vision in particular is pretty amazing in all his scenes.</p>
-
-											<p>THE BAD:</p>
-
-											<p>The beginning of the film it's fine until towards the second act and there is when it starts to feel a little rushed. Also I do feel like there are scenes missing but there was talk of an extended version on Blu-Ray so that's cool.</p>
-										</div>
-										<div class="mv-user-review-item">
-											<div class="user-infor">
-												<img src="images/uploads/userava3.jpg" alt="">
-												<div>
-													<h3>One of the most boring exepirences from watching a movie</h3>
-													<div class="no-star">
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-													</div>
-													<p class="time">
-														 26 March 2017 by<a href="#"> christopherfreeman</a>
-													</p>
-												</div>
-											</div>
-											<p>I can't right much... it's just so forgettable...Okay, from what I remember, I remember just sitting down on my seat and waiting for the movie to begin. 5 minutes into the movie, boring scene of Tony Stark just talking to his "dead" friends saying it's his fault. 10 minutes in: Boring scene of Ultron and Jarvis having robot space battles(I dunno:/). 15 minutes in: I leave the theatre.2nd attempt at watching it: I fall asleep. What woke me up is the next movie on Netflix when the movie was over.</p>
-
-											<p>Bottemline: It's boring...</p>
-
-											<p>10/10 because I'm a Marvel Fanboy</p>
-										</div>
-										<div class="mv-user-review-item ">
-											<div class="user-infor">
-												<img src="images/uploads/userava4.jpg" alt="">
-												<div>
-													<h3>That spirit of fun</h3>
-													<div class="no-star">
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-													</div>
-													<p class="time">
-														26 March 2017 by <a href="#"> juliawest</a>
-													</p>
-												</div>
-											</div>
-											<p>If there were not an audience for Marvel comic heroes than clearly these films would not be made, to answer one other reviewer although I sympathize with him somewhat. The world is indeed an infinitely more complex place than the world of Marvel comics with clearly identifiable heroes and villains. But I get the feeling that from Robert Downey, Jr. on down the organizer and prime mover as Iron Man behind the Avengers these players do love doing these roles because it's a lot of fun. If they didn't show that spirit of fun to the audience than these films would never be made.</p>
-
-											<p>So in that spirit of fun Avengers: Age Of Ultron comes before us and everyone looks like they're having a good time saving the world. A computer program got loose and took form in this dimension named Ultron and James Spader who is completely unrecognizable is running amuck in the earth. No doubt Star Trek fans took notice that this guy's mission is to cleanse the earth much like that old earth probe NOMAD which got its programming mixed up in that classic Star Trek prime story. Wouldst Captain James T. Kirk of the Enterprise had a crew like Downey has at his command.</p>
-											<p>My favorite is always Chris Evans because of the whole cast he best gets into the spirit of being a superhero. Of all of them, he's already played two superheroes, Captain America and Johnny Storm the Human Torch. I'll be before he's done Evans will play a couple of more as long as the money's good and he enjoys it.</p>
-
-											<p>Pretend you're a kid again and enjoy, don't take it so seriously.</p>
-										</div>
-										<div class="mv-user-review-item last">
-											<div class="user-infor">
-												<img src="images/uploads/userava5.jpg" alt="">
-												<div>
-													<h3>Impressive Special Effects and Cast</h3>
-													<div class="no-star">
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star"></i>
-														<i class="ion-android-star last"></i>
-														<i class="ion-android-star last"></i>
-													</div>
-													<p class="time">
-														26 March 2017 by <a href="#"> johnnylee</a>
-													</p>
-												</div>
-											</div>
-											<p>The Avengers raid a Hydra base in Sokovia commanded by Strucker and they retrieve Loki's scepter. They also discover that Strucker had been conducting experiments with the orphan twins Pietro Maximoff (Aaron Taylor-Johnson), who has super speed, and Wanda Maximoff (Elizabeth Olsen), who can control minds and project energy. Tony Stark (Robert Downey Jr.) discovers an Artificial Intelligence in the scepter and convinces Bruce Banner (Mark Ruffalo) to secretly help him to transfer the A.I. to his Ultron defense system. However, the Ultron understands that is necessary to annihilate mankind to save the planet, attacks the Avengers and flees to Sokovia with the scepter. He builds an armature for self-protection and robots for his army and teams up with the twins. The Avengers go to Clinton Barton's house to recover, but out of the blue, Nick Fury (Samuel L. Jackson) arrives and convinces them to fight against Ultron. Will they succeed? </p>
-
-											<p>"Avengers: Age of Ultron" is an entertaining adventure with impressive special effects and cast. The storyline might be better, since most of the characters do not show any chemistry. However, it is worthwhile watching this film since the amazing special effects are not possible to be described in words. Why Pietro has to die is also not possible to be explained. My vote is eight.</p>
-										</div>
-										<div class="topbar-filter">
+										
+										<!--<div class="topbar-filter">
 											<label>Reviews per page:</label>
 											<select>
 												<option value="range">5 Reviews</option>
@@ -531,7 +400,7 @@ include '../admin/dbconnect.php';
 												<a href="#">6</a>
 												<a href="#"><i class="ion-arrow-right-b"></i></a>
 											</div>
-										</div>
+										</div>-->
 						            </div>
 						        </div>
 						        <div id="cast" class="tab">
@@ -729,7 +598,7 @@ include '../admin/dbconnect.php';
 					       	 		<div class="row">
 					       	 			<h3>Related Movies To</h3>
 					       	 			<h2><?php echo $film['nama_film'] ?></h2>
-					       	 			<div class="topbar-filter">
+					       	 			<!--<div class="topbar-filter">
 											<p>Found <span>12 movies</span> in total</p>
 											<label>Sort by:</label>
 											<select>
@@ -740,7 +609,7 @@ include '../admin/dbconnect.php';
 												<option value="date">Release date Descending</option>
 												<option value="date">Release date Ascending</option>
 											</select>
-										</div>
+										</div>-->
 										<div class="movie-item-style-2">
 											<img src="images/uploads/mv1.jpg" alt="">
 											<div class="mv-item-infor">
