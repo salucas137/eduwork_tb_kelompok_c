@@ -138,7 +138,7 @@ include '../admin/dbconnect.php';
 							<span></span>
 						</div>
 					</div>
-					<a href="index-2.html"><img class="logo" src="../images/logo.png" alt="" width="240" height=""></a>
+					<a href="index.html"><img class="logo" src="../images/logo.png" alt="" width="240" height=""></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -189,11 +189,15 @@ include '../admin/dbconnect.php';
 <div class="page-single movie-single movie_single">
 
 <?php
-<<<<<<< Updated upstream
+$moviesid = $_GET['moviesid'];
+	// $query = mysqli_query($conn ,"SELECT * FROM film WHERE film.id = '2'");
+
+    // while ($film = mysqli_fetch_array($query)) : ?>
+<?php $query = mysqli_query($conn, "select * from film where id='$moviesid'");
+   $film = mysqli_fetch_array($query) ?>
 	$query = mysqli_query($conn ,"SELECT * FROM film WHERE film.id = '1'");
 
     while ($film = mysqli_fetch_array($query)) : ?>
-=======
 $moviesid = $_GET['movieid']; ?>
 <?php
 $query = mysqli_query($conn, "SELECT *, film.nama_film, kategori.nama_kategori, pemain.nama_pemain, pemain.foto, komentar.isi_komentar, komentar.nama_komentar
@@ -214,7 +218,6 @@ while ($row = mysqli_fetch_assoc($query)) {
     $actors[] = $row['nama_pemain'];
 }
 ?>
->>>>>>> Stashed changes
 
 	<div class="container">
 		<div class="row ipad-width2">
@@ -236,7 +239,7 @@ while ($row = mysqli_fetch_assoc($query)) {
 
 			<div class="col-md-8 col-sm-12 col-xs-12">
 				<div class="movie-single-ct main-content">
-					<h1 class="bd-hd"><?php echo $film['nama_film'] ?> <span><?php echo $film['tahun_rillis'] ?></span></h1>
+					<h1 class="bd-hd"><?= $film["nama_film"]; ?> <span><?php echo $film['tahun_rillis'] ?></span></h1>
 					<div class="social-btn">
 						<a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
 						<div class="hover-bnt">
@@ -687,14 +690,14 @@ while ($row = mysqli_fetch_assoc($query)) {
 			</div>
 		</div>
 	</div>
-	<?php endwhile ?> <!-- /END OF PHP -->
+	 <!-- /END OF PHP -->
 </div>
 <!-- footer section-->
 <footer class="ht-footer">
 	<div class="container">
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1">
-				 <a href="index-2.html"><img class="logo" src="images/logo1.png" alt=""></a>
+				 <a href="index.html"><img class="logo" src="../images/logo.png" alt="" width="240"></a>
 				 <p>5th Avenue st, manhattan<br>
 				New York, NY 10001</p>
 				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
