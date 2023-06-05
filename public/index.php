@@ -82,6 +82,11 @@
 							</a>
 						</li>
 						<li>
+							<a href="categories.php" class="btn btn-default">
+								Categories</i>
+							</a>
+						</li>
+						<li>
 							<a href="celebritylist.php" class="btn btn-default">
 								Celebrities</i>
 							</a>
