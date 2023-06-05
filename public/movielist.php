@@ -79,7 +79,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 							</a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default" href="categories.php">
+							<a class="btn btn-default" href="category.php">
 								Categories
 							</a>
 						</li>
