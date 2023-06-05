@@ -103,7 +103,6 @@
 		<h2 class="text-yellow">FILM REVIEW  &middot;  MOVIE TOP</h2>
 		<h2>Kassalman - Teguh - Ievy - Nova</h2>
 	</div>
-	<a href="#" class="redbtn" id="discover-now">DISCOVER NOW</a>
 </div>
 
 <!-- footer v3 section-->
