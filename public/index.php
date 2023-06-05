@@ -168,10 +168,7 @@
 					</div>
 					<div class="tabs">
 						<ul class="tab-links">
-							<li class="active"><a href="#tab1">#Popular</a></li>
-							<li><a href="#tab2"> #Coming soon</a></li>
-							<li><a href="#tab3"> #Top rated </a></li>
-							<li><a href="#tab4"> #Most reviewed</a></li>
+							
 						</ul>
 						<div class="tab-content">
 							<div id="tab1" class="tab active">
@@ -208,96 +205,9 @@
 									</div>
 								</div>
 							</div>
-							<div id="tab2" class="tab">
-								<div class="row">
-									<div class="slick-multiItem">
-										<?php
-					$query = mysqli_query($conn ,"SELECT * FROM film"); 
-          $count = mysqli_num_rows($query);
-					if($count>0){ 
-              while($data=mysqli_fetch_array($query)){
-          ?>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
-													<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
-												</div>
-											</div>
-										</div>
-										<?php 
-              }
-            }
-          ?>
-									</div>
-								</div>
-							</div>
-							<div id="tab3" class="tab">
-								<div class="row">
-									<div class="slick-multiItem">
-										<?php
-					$query = mysqli_query($conn ,"SELECT * FROM film"); 
-          $count = mysqli_num_rows($query);
-					if($count>0){ 
-              while($data=mysqli_fetch_array($query)){
-          ?>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
-													<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
-												</div>
-											</div>
-										</div>
-										<?php 
-              }
-            }
-          ?>
-									</div>
-								</div>
-							</div>
-							<div id="tab4" class="tab">
-								<div class="row">
-									<div class="slick-multiItem">
-										<?php
-					$query = mysqli_query($conn ,"SELECT * FROM film"); 
-          $count = mysqli_num_rows($query);
-					if($count>0){ 
-              while($data=mysqli_fetch_array($query)){
-          ?>
-										<div class="slide-it">
-											<div class="movie-item">
-												<div class="mv-img">
-													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
-												</div>
-												<div class="hvr-inner">
-													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-												</div>
-												<div class="title-in">
-													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
-													<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
-												</div>
-											</div>
-										</div>
-										<?php 
-              }
-            }
-          ?>
-									</div>
-								</div>
-							</div>
+							
+							
+							
 						</div>
 					</div>
 			
