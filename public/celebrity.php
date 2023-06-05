@@ -81,7 +81,7 @@ $query = mysqli_query($conn, "SELECT * FROM `pemain` where id='$celebrityid'");
 							</a>
 						</li>
 						<li>
-							<a href="kategori.php" class="btn btn-default">
+							<a href="category.php" class="btn btn-default">
 								Categories</i>
 							</a>
 						</li>
