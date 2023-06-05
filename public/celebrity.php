@@ -80,6 +80,11 @@ $query = mysqli_query($conn, "SELECT * FROM `pemain` where id='$celebrityid'");
 								movies
 							</a>
 						</li>
+						<li>
+							<a href="kategori.php" class="btn btn-default">
+								Categories</i>
+							</a>
+						</li>
 						<li class="dropdown first">
 							<a class="btn btn-default" href="celebritylist.php">
 								celebrities
