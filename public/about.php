@@ -78,7 +78,7 @@
 							</a>
 						</li>
 				<li>
-							<a href="categories.php" class="btn btn-default">
+							<a href="category.php" class="btn btn-default">
 								Categories</i>
 							</a>
 						</li>
