@@ -119,26 +119,7 @@
 	<div class="container">
 		<div class="row ipad-width2">
 			<div class="col-md-9 col-sm-12 col-xs-12">
-				<div class="topbar-filter">
-					<?php
-					$query = mysqli_query($conn ,"SELECT * FROM pemain"); 
-          $data = mysqli_num_rows($query);
-?>
-					
-					<p class="pad-change">Found <span><?php echo $data; ?> celebrities</span> in total</p>
-					<label>Sort by:</label>
-					<select>
-						<option value="popularity">Popularity Descending</option>
-						<option value="popularity">Popularity Ascending</option>
-						<option value="rating">Rating Descending</option>
-						<option value="rating">Rating Ascending</option>
-						<option value="date">Release date Descending</option>
-						<option value="date">Release date Ascending</option>
-					</select>
-					<a href="#" class="list"><i class="ion-ios-list-outline "></i></a>
-					<a  href="celebritylist.php" class="grid"><i class="ion-grid active"></i></a>
-
-				</div>
+				
 
 				<div class="celebrity-items">
 					<?php
