@@ -152,7 +152,12 @@ include '../admin/dbconnect.php';
 						</li>
 						<li class="dropdown first">
 							<a class="btn btn-default" href="movielist.php">
-								movies
+								Movies
+							</a>
+						</li>
+						<li class="dropdown first">
+							<a class="btn btn-default" href="category.php">
+								Category
 							</a>
 						</li>
 						<li class="dropdown first">
@@ -401,256 +406,41 @@ $reviews = array_unique($reviews, SORT_REGULAR);
 										</div>
 										<?php endforeach; ?>
 										
-										<!--<div class="topbar-filter">
-											<label>Reviews per page:</label>
-											<select>
-												<option value="range">5 Reviews</option>
-												<option value="saab">10 Reviews</option>
-											</select>
-											<div class="pagination2">
-												<span>Page 1 of 6:</span>
-												<a class="active" href="#">1</a>
-												<a href="#">2</a>
-												<a href="#">3</a>
-												<a href="#">4</a>
-												<a href="#">5</a>
-												<a href="#">6</a>
-												<a href="#"><i class="ion-arrow-right-b"></i></a>
-											</div>
-										</div>-->
 						            </div>
 						        </div>
-						        <div id="cast" class="tab">
-						        	<div class="row">
-						            	<h3>Cast & Crew of</h3>
-					       	 			<h2>Avengers: Age of Ultron</h2>
-										<!-- //== -->
-					       	 			<div class="title-hd-sm">
-											<h4>Directors & Credit Writers</h4>
-										</div>
-										<div class="mvcast-item">											
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JW</h4>
-													<a href="#">Joss Whedon</a>
-												</div>
-												<p>...  Director</p>
-											</div>
-										</div>
-										<!-- //== -->
-										<div class="title-hd-sm">
-											<h4>Directors & Credit Writers</h4>
-										</div>
-										<div class="mvcast-item">											
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>SL</h4>
-													<a href="#">Stan Lee</a>
-												</div>
-												<p>...  (based on Marvel comics)</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JK</h4>
-													<a href="#">Jack Kirby</a>
-												</div>
-												<p>...  (based on Marvel comics)</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JS</h4>
-													<a href="#">Joe Simon</a>
-												</div>
-												<p>...  (character created by: Captain America)</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JS</h4>
-													<a href="#">Joe Simon</a>
-												</div>
-												<p>...  (character created by: Thanos)</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>RT</h4>
-													<a href="#">Roy Thomas</a>
-												</div>
-												<p>...  (character created by: Ultron, Vision)</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JB</h4>
-													<a href="#">John Buscema</a>
-												</div>
-												<p>...  (character created by: Ultron, Vision)</p>
-											</div>
-										</div>
-										<!-- //== -->
-										<div class="title-hd-sm">
-											<h4>Cast</h4>
-										</div>
-										<div class="mvcast-item">											
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast1.jpg" alt="">
-													<a href="#">Robert Downey Jr.</a>
-												</div>
-												<p>...  Robert Downey Jr.</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast2.jpg" alt="">
-													<a href="#">Chris Hemsworth</a>
-												</div>
-												<p>...  Thor</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast3.jpg" alt="">
-													<a href="#">Mark Ruffalo</a>
-												</div>
-												<p>...  Bruce Banner/ Hulk</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast4.jpg" alt="">
-													<a href="#">Chris Evans</a>
-												</div>
-												<p>...  Steve Rogers/ Captain America</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast5.jpg" alt="">
-													<a href="#">Scarlett Johansson</a>
-												</div>
-												<p>...  Natasha Romanoff/ Black Widow</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast6.jpg" alt="">
-													<a href="#">Jeremy Renner</a>
-												</div>
-												<p>...  Clint Barton/ Hawkeye</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast7.jpg" alt="">
-													<a href="#">James Spader</a>
-												</div>
-												<p>...  Ultron</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<img src="images/uploads/cast9.jpg" alt="">
-													<a href="#">Don Cheadle</a>
-												</div>
-												<p>...  James Rhodes/ War Machine</p>
-											</div>
-										</div>
-										<!-- //== -->
-										<div class="title-hd-sm">
-											<h4>Produced by</h4>
-										</div>
-										<div class="mvcast-item">											
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>VA</h4>
-													<a href="#">Victoria Alonso</a>
-												</div>
-												<p>...  executive producer</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>MB</h4>
-													<a href="#">Mitchel Bell</a>
-												</div>
-												<p>...  co-producer (as Mitch Bell)</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JC</h4>
-													<a href="#">Jamie Christopher</a>
-												</div>
-												<p>...  associate producer</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>LD</h4>
-													<a href="#">Louis D’Esposito</a>
-												</div>
-												<p>...  executive producer</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JF</h4>
-													<a href="#">Jon Favreau</a>
-												</div>
-												<p>...  executive producer</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>KF</h4>
-													<a href="#">Kevin Feige</a>
-												</div>
-												<p>...  producer</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>AF</h4>
-													<a href="#">Alan Fine</a>
-												</div>
-												<p>...  executive producer</p>
-											</div>
-											<div class="cast-it">
-												<div class="cast-left">
-													<h4>JF</h4>
-													<a href="#">Jeffrey Ford</a>
-												</div>
-												<p>...  associate producer</p>
-											</div>
-										</div>
-						            </div>
-					       	 	</div>
+						        
+					       	 	
 					       	 	<div id="moviesrelated" class="tab">
+
 					       	 		<div class="row">
 					       	 			<h3>Related Movies To</h3>
 					       	 			<h2><?php echo $film['nama_film'] ?></h2>
-					       	 			<!--<div class="topbar-filter">
-											<p>Found <span>12 movies</span> in total</p>
-											<label>Sort by:</label>
-											<select>
-												<option value="popularity">Popularity Descending</option>
-												<option value="popularity">Popularity Ascending</option>
-												<option value="rating">Rating Descending</option>
-												<option value="rating">Rating Ascending</option>
-												<option value="date">Release date Descending</option>
-												<option value="date">Release date Ascending</option>
-											</select>
-										</div>-->
+
+
+										<?php
+        								// Fetch related movies based on the category
+       									$relatedQuery = mysqli_query($conn, "SELECT * FROM film JOIN detail_kategori ON film.id = detail_kategori.film_id JOIN kategori ON kategori.id = detail_kategori.kategori_id WHERE kategori.nama_kategori = '$categories[0]' AND film.id != '$moviesid'");
+
+        								if (mysqli_num_rows($relatedQuery) > 0) {
+           									while ($relatedData = mysqli_fetch_assoc($relatedQuery)) {
+                						?>
 										<div class="movie-item-style-2">
-											<img src="images/uploads/mv1.jpg" alt="">
+											<img src="<?php echo $relatedData['gambar']; ?>" alt="">
 											<div class="mv-item-infor">
-												<h6><a href="#">oblivion <span>(2012)</span></a></h6>
-												<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
-												<p class="describe">Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity...</p>
-												<p class="run-time"> Run Time: 2h21’    .     <span>Release: 2015</span></p>
-												<p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris Evans,</a> <a href="#">  Chris Hemsworth</a></p>
+												<h6><a href="movies.php?movieid=<?php echo $relatedData['id']; ?>"><?php echo $relatedData['nama_film']; ?></a> <span style="color: gray;">(<?php echo $relatedData['tahun_rillis']; ?>)</span></h6>
+												<p class="rate"><i class="ion-android-star"></i><span><?php echo $relatedData['rating']; ?></span> /10</p>
+												<p class="describe"><?php echo $relatedData['sinopsis']; ?></p>
+												<p class="run-time"><?php echo $relatedData['durasi']; ?></p>
+												<!--<p>Stars: </p>-->
 											</div>
 										</div>
+										<?php
+            									}
+       									 } else {
+            							echo "No related movies found.";
+        								}
+        								?>
 										
-										<!--<div class="topbar-filter">
-											<label>Movies per page:</label>
-											<select>
-												<option value="range">5 Movies</option>
-												<option value="saab">10 Movies</option>
-											</select>
-											<div class="pagination2">
-												<span>Page 1 of 2:</span>
-												<a class="active" href="#">1</a>
-												<a href="#">2</a>
-												<a href="#"><i class="ion-arrow-right-b"></i></a>
-											</div>
-										</div>-->
 
 					       	 		</div>
 					       	 	</div>
@@ -667,48 +457,23 @@ $reviews = array_unique($reviews, SORT_REGULAR);
 <footer class="ht-footer">
 	<div class="container">
 		<div class="flex-parent-ft">
-			<div class="flex-child-ft item1">
-				 <a href="index.php"><img class="logo" src="../images/logo.png" alt="" width="240"></a>
-				 <p>5th Avenue st, manhattan<br>
-				New York, NY 10001</p>
-				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
-			</div>
-			<div class="flex-child-ft item2">
-				<h4>Resources</h4>
-				<ul>
-					<li><a href="#">About</a></li> 
-					<li><a href="#">Blockbuster</a></li>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Forums</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Help Center</a></li>
-				</ul>
-			</div>
-			<div class="flex-child-ft item3">
-				<h4>Legal</h4>
-				<ul>
-					<li><a href="#">Terms of Use</a></li> 
-					<li><a href="#">Privacy Policy</a></li>	
-					<li><a href="#">Security</a></li>
-				</ul>
-			</div>
-			<div class="flex-child-ft item4">
-				<h4>Account</h4>
-				<ul>
-					<li><a href="#">My Account</a></li> 
-					<li><a href="#">Watchlist</a></li>	
-					<li><a href="#">Collections</a></li>
-					<li><a href="#">User Guide</a></li>
-				</ul>
-			</div>
-			<div class="flex-child-ft item5">
-				<h4>Newsletter</h4>
-				<p>Subscribe to our newsletter system now <br> to get latest news from us.</p>
-				<form action="#">
-					<input type="text" placeholder="Enter your email...">
-				</form>
-				<a href="#" class="btn">Subscribe now <i class="ion-ios-arrow-forward"></i></a>
-			</div>
+		<div class="flex-child-ft item1">
+					<a href="index.php"><img class="logo" src="../images/logo.png" alt="" width="240"></a>
+					<p>Jakarta, Indonesia<br>
+						Jakarta, 12840</p>
+					<p>Call us: <a href="#">(+62) 895 1232 4565</a></p>
+				</div>
+				<div class="flex-child-ft item2">
+					<h4>Resources</h4>
+					<ul>
+						<li><a href="about.php">About</a></li>
+						<li><a href="#">Blockbuster</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">Forums</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Help Center</a></li>
+					</ul>
+				</div>
 		</div>
 	</div>
 	<div class="ft-copyright">
