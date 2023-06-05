@@ -65,6 +65,7 @@
 					<ul class="nav navbar-nav flex-child-menu menu-left">
 						<li class="hidden">
 							<a href="#page-top"></a>
+							
 						</li>
 						<li>
 							<a href="index.php" class="btn btn-default">
@@ -76,6 +77,12 @@
 								movies</i>
 							</a>
 						</li>
+				<li>
+							<a href="categories.php" class="btn btn-default">
+								Categories</i>
+							</a>
+						</li>
+				
 						<li>
 							<a href="celebritylist.php" class="btn btn-default">
 								Celebrities</i>
