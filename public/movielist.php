@@ -61,7 +61,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 							<span></span>
 						</div>
 					</div>
-					<a href="index.html"><img class="logo" src="../images/logo.png" alt="" width="240" height=""></a>
+					<a href="index.php"><img class="logo" src="../images/logo.png" alt="" width="240" height=""></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -70,12 +70,22 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 							<a href="#page-top"></a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default " href="#">
+							<a class="btn btn-default " href="index.php">
 								Home</a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default" href="#">
+							<a class="btn btn-default" href="movies.php">
 								movies
+							</a>
+						</li>
+						<li class="dropdown first">
+							<a class="btn btn-default" href="celebritylist.php">
+								Celebrity
+							</a>
+						</li>
+						<li class="dropdown first">
+							<a class="btn btn-default" href="about.php">
+								About
 							</a>
 						</li>
 
@@ -173,7 +183,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 		<div class="container">
 			<div class="flex-parent-ft">
 				<div class="flex-child-ft item1">
-					<a href="index.html"><img class="logo" src="../images/logo.png" alt="" width="240"></a>
+					<a href="index.php"><img class="logo" src="../images/logo.png" alt="" width="240"></a>
 					<p>5th Avenue st, manhattan<br>
 						New York, NY 10001</p>
 					<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
