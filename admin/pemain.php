@@ -202,7 +202,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Batal</button>
-                      <button type="submit" name="btnTambahFilm" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Simpan</button>
+                      <button type="submit" name="btnTambahPemain" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Simpan</button>
                     </div>
                   </div>
                 </form>
