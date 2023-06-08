@@ -194,15 +194,12 @@
                         <label for="rating">Rating Film</label>
                         <input type="number" step="0.01" name="rating" required class="form-control" id="rating">
                       </div>
-                      <div class="form-group text-center">
-                        <a href="" class="enlarge" id="check_enlarge_photo">
-                          <img src="" class="img-profile rounded" id="check_photo" alt="gambar">
-                        </a>
+                      
                         <div class="form-group">
                           <label for="photo">Gambar</label>
-                          <input type="file" name="gambar" id="photo" class="btn btn-sm btn-primary form-control form-control-file" accept="image/*">
+                          <input type="text" name="gambar" id="photo" required class="form-control" >
                         </div>
-                      </div>
+                      
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-fw fa-times"></i> Batal</button>
@@ -292,7 +289,7 @@
                                     </a>
                                     <div class="form-group">
                                       <label for="gambar<?= $df['id_film']; ?>">Gambar Film</label>
-                                      <input type="file" name="gambar" id="gambar<?= $df['id_film']; ?>" class="photo btn btn-sm btn-primary form-control form-control-file" accept="image/*">
+                                      <input type="text" name="gambar" value="<?= $df['gambar']; ?>" id="gambar<?= $df['id_film']; ?>" required class="form-control">
                                     </div>
                                   </div>
                                 </div>

@@ -112,7 +112,7 @@ function tambahFilm($data) {
 	$durasi = htmlspecialchars(addslashes(ucwords($data['durasi'])));
 	$tahun_rillis = htmlspecialchars(addslashes($data['tahun_rillis']));
 	$rating = htmlspecialchars($data['rating']);
-	$gambar = uploadFilm();
+	$gambar = htmlspecialchars(addslashes($data['gambar']));
 	$id_admin = $_SESSION['id_admin'];
 	if (!$gambar) {
 		return false;
@@ -120,42 +120,6 @@ function tambahFilm($data) {
 	mysqli_query($koneksi, "INSERT INTO film VALUES ('', '$nama_film',  '$sinopsis', '$durasi',  '$tahun_rillis', '$rating',  '$gambar', '$id_admin')");
 	riwayat($id_admin, "Berhasil menambahkan film $nama_film");
 	return mysqli_affected_rows($koneksi);
-}
-
-function uploadFilm() {
-	$nama_gambar 	= $_FILES['gambar']['name'];
-	$ukuran_gambar 	= $_FILES['gambar']['size'];
-	$error			= $_FILES['gambar']['error'];
-	$tmp_name		= $_FILES['gambar']['tmp_name'];
-
-	// cek aoakah mengupload gambar
-	if ($error === 4) {
-		setAlert('Gagal mengubah gambar', 'Pilih gambar terlebih dahulu!', 'error');
-		return false;
-	}
-
-	// cek ekstensi gambar
-	$ekstensi_gambar_valid 	= ['jpg', 'jpeg', 'png', 'gif'];
-	$ekstensi_gambar 	  	=  explode('.', $nama_gambar);
-	$ekstensi_gambar 	  	=  strtolower(end($ekstensi_gambar));
-	if (!in_array($ekstensi_gambar, $ekstensi_gambar_valid)) {
-		setAlert('Gagal mengubah gambar', 'Pilih gambar yang berekstensi gambar!', 'error');
-		return false;
-	}
-
-	// cek ukuran gambar
-	if ($ukuran_gambar > 1000000) {
-		setAlert('Gagal mengubah gambar', 'Ukuran gambar terlalu besar!', 'error');
-		return false;
-	}
-
-	// generate random nama
-	$nama_gambar_baru = uniqid();
-	$nama_gambar_baru .= '.';
-	$nama_gambar_baru .= $ekstensi_gambar;
-
-	move_uploaded_file($tmp_name, '' . $nama_gambar_baru);
-	return $nama_gambar_baru;
 }
 
 function hapusFilm($id) {
