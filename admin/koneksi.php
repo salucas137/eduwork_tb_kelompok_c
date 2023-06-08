@@ -174,7 +174,7 @@ function tambahPemain($data) {
 	$tanggal_lahir = time();
 	$negara = htmlspecialchars(addslashes(ucwords($data['negara'])));
 	$bio = htmlspecialchars($data['bio']);
-	$foto = uploadPemain();
+	$foto = htmlspecialchars(addslashes($data['foto']));
 	$id_admin = $_SESSION['id_admin'];
 	if (!$foto) {
 		return false;
@@ -184,41 +184,6 @@ function tambahPemain($data) {
 	return mysqli_affected_rows($koneksi);
 }
 
-function uploadPemain() {
-	$nama_foto 	    = $_FILES['foto']['name'];
-	$ukuran_foto 	= $_FILES['foto']['size'];
-	$error			= $_FILES['foto']['error'];
-	$tmp_name		= $_FILES['foto']['tmp_name'];
-
-	// cek aoakah mengupload foto
-	if ($error === 4) {
-		setAlert('Gagal mengubah foto', 'Pilih foto terlebih dahulu!', 'error');
-		return false;
-	}
-
-	// cek ekstensi foto
-	$ekstensi_foto_valid 	= ['jpg', 'jpeg', 'png', 'gif'];
-	$ekstensi_foto 	  	=  explode('.', $nama_foto);
-	$ekstensi_foto 	  	=  strtolower(end($ekstensi_foto));
-	if (!in_array($ekstensi_foto, $ekstensi_foto_valid)) {
-		setAlert('Gagal mengubah foto', 'Pilih foto yang berekstensi foto!', 'error');
-		return false;
-	}
-
-	// cek ukuran foto
-	if ($ukuran_foto > 1000000) {
-		setAlert('Gagal mengubah foto', 'Ukuran foto terlalu besar!', 'error');
-		return false;
-	}
-
-	// generate random nama
-	$nama_foto_baru = uniqid();
-	$nama_foto_baru .= '.';
-	$nama_foto_baru .= $ekstensi_foto;
-
-	move_uploaded_file($tmp_name, '' . $nama_foto_baru);
-	return $nama_foto_baru;
-}
 
 function hapusPemain($id) {
 	global $koneksi;
