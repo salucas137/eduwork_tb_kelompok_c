@@ -185,15 +185,10 @@
                         <label for="negara">Negara</label>
                         <input type="text" name="negara" required class="form-control" id="negara">
                       </div>
-                      <div class="form-group text-center">
-                        <a href="" class="enlarge" id="check_enlarge_photo">
-                          <img src="" class="img-profile rounded" id="check_photo" alt="foto">
-                        </a>
                         <div class="form-group">
-                          <label for="photo">Foto</label>
-                          <input type="file" name="foto" id="photo" class="btn btn-sm btn-primary form-control form-control-file" accept="image/*">
+                          <label for="foto">Foto</label>
+                          <input type="text" name="foto" required class="form-control" id="foto">
                         </div>
-                      </div>
                       <div class="form-group">
                         <label for="bio">Bio</label>
                         <input type="text" name="bio" required class="form-control" id="bio">
@@ -278,7 +273,7 @@
                                     </a>
                                     <div class="form-group">
                                       <label for="foto<?= $dp['id_pemain']; ?>">foto Film</label>
-                                      <input type="file" name="foto" id="foto<?= $dp['id_pemain']; ?>" class="photo btn btn-sm btn-primary form-control form-control-file" accept="image/*">
+                                      <input type="file" name="foto" value="<?= $dp['foto']; ?>" required class="form-control" id="foto<?= $dp['id_pemain']; ?>">
                                     </div>
                                   </div>
                                   <div class="form-group">
