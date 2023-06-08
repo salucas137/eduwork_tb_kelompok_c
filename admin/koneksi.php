@@ -140,12 +140,8 @@ function ubahFilm($data) {
 	$tahun_rillis = htmlspecialchars($data['tahun_rillis']);
 	$rating = htmlspecialchars($data['rating']);
 	$id_admin = $_SESSION['id_admin'];
-	$gambar_lama = htmlspecialchars($data['gambar_lama']);
-	if ($_FILES['gambar']['error'] === 4) {
-		$gambar = $gambar_lama;
-	} else {
-		$gambar = uploadFilm();
-	}
+	$gambar = htmlspecialchars($data['gambar']);
+	
 	mysqli_query($koneksi, "UPDATE film SET nama_film = '$nama_film',  sinopsis = '$sinopsis', durasi = '$durasi', tahun_rillis = '$tahun_rillis', rating = '$rating', gambar = '$gambar', id_admin = '$id_admin' WHERE id_film = '$id_film'");
 	riwayat($id_admin, "Berhasil mengubah film $nama_film");
 	return mysqli_affected_rows($koneksi);
