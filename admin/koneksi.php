@@ -202,12 +202,7 @@ function ubahPemain($data) {
 	$negara = htmlspecialchars(addslashes(ucwords($data['negara'])));
 	$bio = htmlspecialchars($data['bio']);
 	$id_admin = $_SESSION['id_admin'];
-	$foto_lama = htmlspecialchars($data['foto_lama']);
-	if ($_FILES['foto']['error'] === 4) {
-		$foto = $foto_lama;
-	} else {
-		$foto = uploadpemain();
-	}
+	$foto = htmlspecialchars($data['foto']);
 	mysqli_query($koneksi, "UPDATE pemain SET nama_pemain = '$nama_pemain',  tanggal_lahir = '$tanggal_lahir', negara = '$negara', bio = '$bio', foto = '$foto', id_admin = '$id_admin' WHERE id_pemain = '$id_pemain'");
 	riwayat($id_admin, "Berhasil mengubah pemain $nama_pemain");
 	return mysqli_affected_rows($koneksi);
