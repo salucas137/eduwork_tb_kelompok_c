@@ -273,7 +273,7 @@
                                     </a>
                                     <div class="form-group">
                                       <label for="foto<?= $dp['id_pemain']; ?>">foto Film</label>
-                                      <input type="file" name="foto" value="<?= $dp['foto']; ?>" required class="form-control" id="foto<?= $dp['id_pemain']; ?>">
+                                      <input type="text" name="foto" value="<?= $dp['foto']; ?>" required class="form-control" id="foto<?= $dp['id_pemain']; ?>">
                                     </div>
                                   </div>
                                   <div class="form-group">
