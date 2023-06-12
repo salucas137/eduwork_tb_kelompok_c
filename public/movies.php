@@ -208,12 +208,12 @@ $moviesid = $_GET['movieid']; ?>
 <?php
 $query = mysqli_query($conn, "SELECT *, film.nama_film, kategori.nama_kategori, pemain.nama_pemain, pemain.foto, komentar.isi_komentar, komentar.nama_komentar, komentar.judul_komentar, komentar.rating_komentar, komentar.tanggal_komentar
                               FROM film 
-                              JOIN detail_kategori ON film.id = detail_kategori.film_id 
-                              JOIN kategori ON kategori.id = detail_kategori.kategori_id 
-                              JOIN detail_pemain ON film.id = detail_pemain.film_id
-                              JOIN pemain ON pemain.id = detail_pemain.pemain_id
-                              LEFT JOIN komentar ON film.id = komentar.film_id
-                              WHERE film.id='$moviesid'");
+                              JOIN detail_kategori ON film.id_film = detail_kategori.film_id 
+                              JOIN kategori ON id_kategori = detail_kategori.kategori_id 
+                              JOIN detail_pemain ON film.id_film = detail_pemain.film_id
+                              JOIN pemain ON pemain.id_pemain = detail_pemain.pemain_id
+                              LEFT JOIN komentar ON film.id_film = komentar.id_film
+                              WHERE film.id_film='$moviesid'");
 $film = mysqli_fetch_assoc($query);
 
 $categories = array();
@@ -346,7 +346,7 @@ $reviews = array_unique($reviews, SORT_REGULAR);
 						            		</div>-->
 						            		<div class="sb-it">
 						            			<h6>Run Time:</h6>
-						            			<p><?php echo $film["durasi"]; ?></p>
+						            			<p><?php echo $film["durasi"]; ?> menit</p>
 						            		</div>
 						            		<!--<div class="sb-it">
 						            			<h6>Plot Keywords:</h6>
@@ -416,10 +416,9 @@ $reviews = array_unique($reviews, SORT_REGULAR);
 					       	 			<h3>Related Movies To</h3>
 					       	 			<h2><?php echo $film['nama_film'] ?></h2>
 
-
 										<?php
         								// Fetch related movies based on the category
-       									$relatedQuery = mysqli_query($conn, "SELECT * FROM film JOIN detail_kategori ON film.id = detail_kategori.film_id JOIN kategori ON kategori.id = detail_kategori.kategori_id WHERE kategori.nama_kategori = '$categories[0]' AND film.id != '$moviesid'");
+       									$relatedQuery = mysqli_query($conn, "SELECT * FROM film JOIN detail_kategori ON id_film = detail_kategori.film_id JOIN kategori ON id_kategori = detail_kategori.kategori_id WHERE kategori.nama_kategori = '$categories[0]' AND id_film != '$moviesid'");
 
         								if (mysqli_num_rows($relatedQuery) > 0) {
            									while ($relatedData = mysqli_fetch_assoc($relatedQuery)) {
@@ -427,10 +426,10 @@ $reviews = array_unique($reviews, SORT_REGULAR);
 										<div class="movie-item-style-2">
 											<img src="<?php echo $relatedData['gambar']; ?>" alt="">
 											<div class="mv-item-infor">
-												<h6><a href="movies.php?movieid=<?php echo $relatedData['id']; ?>"><?php echo $relatedData['nama_film']; ?></a> <span style="color: gray;">(<?php echo $relatedData['tahun_rillis']; ?>)</span></h6>
+												<h6><a href="movies.php?movieid=<?php echo $relatedData['id_film']; ?>"><?php echo $relatedData['nama_film']; ?></a> <span style="color: gray;">(<?php echo $relatedData['tahun_rillis']; ?>)</span></h6>
 												<p class="rate"><i class="ion-android-star"></i><span><?php echo $relatedData['rating']; ?></span> /10</p>
 												<p class="describe"><?php echo $relatedData['sinopsis']; ?></p>
-												<p class="run-time"><?php echo $relatedData['durasi']; ?></p>
+												<p class="run-time"><?php echo $relatedData['durasi']; ?> menit</p>
 												<!--<p>Stars: </p>-->
 											</div>
 										</div>
