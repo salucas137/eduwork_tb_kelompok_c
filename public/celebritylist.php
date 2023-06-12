@@ -130,9 +130,9 @@
           ?>
 
 					<div class="ceb-item">
-						<a href="celebrity.php?celebrityid=<?= $data['id'] ?>"><img style="width: 270px; height: auto;" src="<?php echo $data["foto"]; ?>" alt="" ></a>
+						<a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><img style="width: 270px; height: auto;" src="<?php echo $data["foto"]; ?>" alt="" ></a>
 						<div class="ceb-infor">
-							<h2><a href="celebrity.php?celebrityid=<?= $data['id'] ?>"><?php echo $data['nama_pemain'] ?></a></h2>
+							<h2><a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><?php echo $data['nama_pemain'] ?></a></h2>
 							<span>Actor, <?php echo $data['negara'] ?></span>
 						</div>
 					</div>
@@ -166,9 +166,9 @@
               while($data=mysqli_fetch_array($query)){
           ?>
 						<div class="celeb-item">
-							<a href="#"><img src="<?php echo $data["foto"]; ?>" alt="" width="70" height="70"></a>
+							<a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><img src="<?php echo $data["foto"]; ?>" alt="" width="70" height="70"></a>
 							<div class="celeb-author">
-								<h6><a href="#"><?php echo $data['nama_pemain'] ?></a></h6>
+								<h6><a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><?php echo $data['nama_pemain'] ?></a></h6>
 								<span><?php echo $data['negara'] ?></span>
 							</div>
 						</div>
