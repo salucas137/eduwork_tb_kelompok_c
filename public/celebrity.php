@@ -2,7 +2,7 @@
 
 include '../admin/dbconnect.php';
 $celebrityid = $_GET['celebrityid'];
-$query = mysqli_query($conn, "SELECT * FROM `pemain` where id='$celebrityid'");
+$query = mysqli_query($conn, "SELECT * FROM `pemain` where pemain.id_pemain='$celebrityid'");
 
 ?>
 <!DOCTYPE html>
