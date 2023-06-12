@@ -39,13 +39,13 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 
 <body>
 	<!--preloading-->
-	<!--<div id="preloader">
+	<div id="preloader">
 		<img class="logo" src="../images/logo.png" alt="" width="240" height="">
 		<div id="status">
 			<span></span>
 			<span></span>
 		</div>
-	</div>-->
+	</div>
 	<!--end of preloading-->
 	<!-- BEGIN | Header -->
 	<header class="ht-header">
@@ -144,9 +144,9 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 										<?php
 											$query = mysqli_query($conn ,"SELECT *, film.nama_film, kategori.nama_kategori
 											FROM film 
-											JOIN detail_kategori ON film.id = detail_kategori.film_id 
-											JOIN kategori ON kategori.id = detail_kategori.kategori_id 
-											WHERE kategori.id='1'"); 
+											JOIN detail_kategori ON film.id_film = detail_kategori.film_id 
+											JOIN kategori ON kategori.id_kategori = detail_kategori.kategori_id 
+											WHERE kategori.id_kategori='1'"); 
           									$count = mysqli_num_rows($query);
 											if($count>0){ 
               								while($data=mysqli_fetch_array($query)){
@@ -157,7 +157,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id_film'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 												<div class="title-in">
 													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
@@ -181,9 +181,9 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 										<?php
 											$query = mysqli_query($conn ,"SELECT *, film.nama_film, kategori.nama_kategori
 											FROM film 
-											JOIN detail_kategori ON film.id = detail_kategori.film_id 
-											JOIN kategori ON kategori.id = detail_kategori.kategori_id 
-											WHERE kategori.id='3'"); 
+											JOIN detail_kategori ON film.id_film = detail_kategori.film_id 
+											JOIN kategori ON kategori.id_kategori = detail_kategori.kategori_id 
+											WHERE kategori.id_kategori='3'"); 
           									$count = mysqli_num_rows($query);
 											if($count>0){ 
               								while($data=mysqli_fetch_array($query)){
@@ -194,7 +194,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id_film'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 												<div class="title-in">
 													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
@@ -218,9 +218,9 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 										<?php
 											$query = mysqli_query($conn ,"SELECT *, film.nama_film, kategori.nama_kategori
 											FROM film 
-											JOIN detail_kategori ON film.id = detail_kategori.film_id 
-											JOIN kategori ON kategori.id = detail_kategori.kategori_id 
-											WHERE kategori.id='9'"); 
+											JOIN detail_kategori ON film.id_film = detail_kategori.film_id 
+											JOIN kategori ON kategori.id_kategori = detail_kategori.kategori_id 
+											WHERE kategori.id_kategori='9'"); 
           									$count = mysqli_num_rows($query);
 											if($count>0){ 
               								while($data=mysqli_fetch_array($query)){
@@ -231,7 +231,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id_film'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 												<div class="title-in">
 													<h6><a href="#"><?php echo $data['nama_film'] ?></a></h6>
