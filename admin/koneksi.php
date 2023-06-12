@@ -171,7 +171,8 @@ function tambahKomentar($data) {
 function tambahPemain($data) {
 	global $koneksi;
 	$nama_pemain = htmlspecialchars(addslashes($data['nama_pemain']));
-	$tanggal_lahir = time();
+	$inputTgl = $data['tanggal_lahir'];  
+	$tanggal_lahir = date("Y-m-d", strtotime($inputTgl));
 	$negara = htmlspecialchars(addslashes(ucwords($data['negara'])));
 	$bio = htmlspecialchars($data['bio']);
 	$foto = htmlspecialchars(addslashes($data['foto']));
@@ -198,7 +199,8 @@ function ubahPemain($data) {
 	global $koneksi;
 	$id_pemain = htmlspecialchars($data['id_pemain']);
 	$nama_pemain = htmlspecialchars(addslashes($data['nama_pemain']));
-	$tanggal_lahir = time();
+	$inputTgl = $data['tanggal_lahir'];  
+	$tanggal_lahir = date("Y-m-d", strtotime($inputTgl));
 	$negara = htmlspecialchars(addslashes(ucwords($data['negara'])));
 	$bio = htmlspecialchars($data['bio']);
 	$id_admin = $_SESSION['id_admin'];
