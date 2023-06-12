@@ -145,7 +145,7 @@
 								?>
 								
 							</div>
-							<h6><a href="#"><span class="orange"><a href="#"><?php echo $data['nama_film'] ?></a></span></a></h6>
+							<h6><span class="orange"><a href="movies.php?movieid=<?= $data['id_film'] ?>"><?php echo $data['nama_film'] ?></a></span></h6>
 							<p><i class="ion-android-star"></i><span><?php echo $data['rating'] ?></span> /10</p>
 						</div>
 					</div>
