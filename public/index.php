@@ -134,7 +134,7 @@
 						<div class="title-in">
 							<div class="cate">
 								<?php
-								$querykategori = mysqli_query($conn ,"SELECT * FROM detail_kategori JOIN kategori on detail_kategori.kategori_id = kategori.id WHERE film_id = $data[id]"); 
+								$querykategori = mysqli_query($conn ,"SELECT * FROM detail_kategori JOIN kategori on detail_kategori.kategori_id = kategori.id_kategori WHERE film_id = $data[id_film]"); 
 														while ($datakategori = mysqli_fetch_array($querykategori)) {
 									?>
 									<span class="blue"><a href="#"><?php echo $datakategori['nama_kategori'] ?></a></span> 
@@ -189,7 +189,7 @@
 													<img src="<?php echo $data["gambar"]; ?>" alt="" width="185" height="284">
 												</div>
 												<div class="hvr-inner">
-													<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													<a href="movies.php?movieid=<?= $data['id_film'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 												</div>
 
 												<div class="title-in">
@@ -236,9 +236,9 @@
               while($data=mysqli_fetch_array($query)){
           ?>
 							<div class="celeb-item">
-								<a href="celebrity.php?celebrityid=<?= $data['id'] ?>"><img src="<?php echo $data["foto"]; ?>" alt="" width="70" height="70"></a>
+								<a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><img src="<?php echo $data["foto"]; ?>" alt="" width="70" height="70"></a>
 								<div class="celeb-author">
-									<h6><a href="celebrity.php?celebrityid=<?= $data['id'] ?>"><?php echo $data['nama_pemain'] ?></a></h6>
+									<h6><a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><?php echo $data['nama_pemain'] ?></a></h6>
 									<span><?php echo $data['negara'] ?></span>
 								</div>
 							</div>

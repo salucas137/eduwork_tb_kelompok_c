@@ -132,7 +132,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 						<div class="movie-item-style-2 movie-item-style-1">
 							<img src="<?php echo $data["gambar"]; ?>" alt="">
 							<div class="hvr-inner">
-							<a href="movies.php?movieid=<?= $data['id'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+							<a href="movies.php?movieid=<?= $data['id_film'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 							</div>
 							<div class="mv-item-infor">
 								<h6><a href="#"><?php echo $data["nama_film"]; ?></a></h6>
