@@ -63,7 +63,7 @@ $query = mysqli_query($conn, "SELECT * FROM `pemain` where pemain.id_pemain='$ce
 							<span></span>
 						</div>
 					</div>
-					<a href="index.html"><img class="logo" src="../images/logo.png" alt="" width="240" height=""></a>
+					<a href="index.php"><img class="logo" src="../images/logo.png" alt="" width="240" height=""></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
