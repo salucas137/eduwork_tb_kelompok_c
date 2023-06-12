@@ -19,7 +19,7 @@ $query = mysqli_query($conn, "SELECT * FROM `pemain` where pemain.id_pemain='$ce
 
 <head>
 	<!-- Basic need -->
-	<title>Open Pediatrics</title>
+	<title>MovieVerse</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -102,13 +102,13 @@ $query = mysqli_query($conn, "SELECT * FROM `pemain` where pemain.id_pemain='$ce
 			</nav>
 
 			<!-- top search form -->
-			<div class="top-search">
+			<!--<div class="top-search">
 				<select>
 					<option value="united">Movie</option>
 					<option value="saab">Others</option>
 				</select>
 				<input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
-			</div>
+			</div>-->
 		</div>
 	</header>
 	<!-- END | Header -->
