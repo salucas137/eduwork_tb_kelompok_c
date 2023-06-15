@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2023 at 02:40 PM
+-- Generation Time: Jun 15, 2023 at 02:42 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -354,7 +354,7 @@ INSERT INTO `riwayat` (`id_riwayat`, `id_admin`, `tindakan`, `tanggal`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
   `email` varchar(225) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
