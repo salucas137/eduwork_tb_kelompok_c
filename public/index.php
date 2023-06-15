@@ -97,7 +97,7 @@ if (isset($_POST['btnTambahUser'])) {
            
             <div class="row">
                 <label for="email-2">
-                    Nama :
+                    Email:
                     <input type="text" name="nama_user" id="nama_user" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
                 </label>
             </div>

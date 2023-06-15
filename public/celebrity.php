@@ -89,7 +89,7 @@ $query = mysqli_query($conn, "SELECT * FROM `pemain` where pemain.id_pemain='$ce
            
             <div class="row">
                 <label for="email-2">
-                    Nama :
+                    Email:
                     <input type="password" name="email" id="email-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
                 </label>
             </div>
