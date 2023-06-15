@@ -1,4 +1,5 @@
 <?php include "../admin/dbconnect.php" ?>
+checkLogin();
 
 <!DOCTYPE html>
 <!--[if IE 7]>
@@ -45,6 +46,17 @@
 
 	<!--end of preloading-->
 	<!--login form popup-->
+	<?php
+
+if (isset($_POST['btnTambahUser'])) {
+    if (tambahUser($_POST) > 0) {
+      $nama_user = htmlspecialchars(addslashes(ucwords($_POST['nama_user'])));
+      setAlert("Berhasil ditambahkan", "Film $nama_user berhasil ditambahkan", "success");
+      header("Location: index.php");
+    }
+  }
+
+	?>
 <div class="login-wrapper" id="login-content">
     <div class="login-content">
         <a href="#" class="close">x</a>
@@ -79,30 +91,24 @@
             <div class="row">
                  <label for="username-2">
                     Username:
-                    <input type="text" name="username" id="username-2" placeholder="" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                    <input type="text" name="username" id="username" placeholder="" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
                 </label>
             </div>
            
             <div class="row">
                 <label for="email-2">
                     Nama :
-                    <input type="password" name="email" id="email-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                    <input type="text" name="nama_user" id="nama_user" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
                 </label>
             </div>
              <div class="row">
                 <label for="password-2">
                     Password:
-                    <input type="password" name="password" id="password-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
-                </label>
-            </div>
-             <div class="row">
-                <label for="repassword-2">
-                    re-type Password:
-                    <input type="password" name="password" id="repassword-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
+                    <input type="password" name="password" id="password" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
                 </label>
             </div>
            <div class="row">
-             <button type="submit">sign up</button>
+             <button type="submit" name="btnTambahUser">sign up</button>
            </div>
         </form>
     </div>
