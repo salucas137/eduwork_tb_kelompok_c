@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jun 2023 pada 16.34
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.1
+-- Generation Time: Jun 15, 2023 at 01:59 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admins`
+-- Table structure for table `admins`
 --
 
 CREATE TABLE `admins` (
@@ -34,10 +33,10 @@ CREATE TABLE `admins` (
   `password` varchar(255) NOT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
   `photo_profile` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `admins`
+-- Dumping data for table `admins`
 --
 
 INSERT INTO `admins` (`id_admin`, `username`, `password`, `nama_lengkap`, `photo_profile`) VALUES
@@ -46,17 +45,17 @@ INSERT INTO `admins` (`id_admin`, `username`, `password`, `nama_lengkap`, `photo
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_kategori`
+-- Table structure for table `detail_kategori`
 --
 
 CREATE TABLE `detail_kategori` (
   `id` int(11) NOT NULL,
   `film_id` int(11) NOT NULL,
   `kategori_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `detail_kategori`
+-- Dumping data for table `detail_kategori`
 --
 
 INSERT INTO `detail_kategori` (`id`, `film_id`, `kategori_id`) VALUES
@@ -91,17 +90,17 @@ INSERT INTO `detail_kategori` (`id`, `film_id`, `kategori_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_pemain`
+-- Table structure for table `detail_pemain`
 --
 
 CREATE TABLE `detail_pemain` (
   `id` int(11) NOT NULL,
   `film_id` int(11) DEFAULT NULL,
   `pemain_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `detail_pemain`
+-- Dumping data for table `detail_pemain`
 --
 
 INSERT INTO `detail_pemain` (`id`, `film_id`, `pemain_id`) VALUES
@@ -141,7 +140,7 @@ INSERT INTO `detail_pemain` (`id`, `film_id`, `pemain_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `film`
+-- Table structure for table `film`
 --
 
 CREATE TABLE `film` (
@@ -153,10 +152,10 @@ CREATE TABLE `film` (
   `rating` varchar(255) NOT NULL,
   `gambar` varchar(225) DEFAULT NULL,
   `id_admin` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `film`
+-- Dumping data for table `film`
 --
 
 INSERT INTO `film` (`id_film`, `nama_film`, `sinopsis`, `durasi`, `tahun_rillis`, `rating`, `gambar`, `id_admin`) VALUES
@@ -174,16 +173,16 @@ INSERT INTO `film` (`id_film`, `nama_film`, `sinopsis`, `durasi`, `tahun_rillis`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
@@ -201,7 +200,7 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komentar`
+-- Table structure for table `komentar`
 --
 
 CREATE TABLE `komentar` (
@@ -212,10 +211,10 @@ CREATE TABLE `komentar` (
   `judul_komentar` varchar(225) NOT NULL,
   `isi_komentar` text NOT NULL,
   `id_film` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `komentar`
+-- Dumping data for table `komentar`
 --
 
 INSERT INTO `komentar` (`id_komentar`, `tanggal_komentar`, `nama_komentar`, `rating_komentar`, `judul_komentar`, `isi_komentar`, `id_film`) VALUES
@@ -231,7 +230,7 @@ INSERT INTO `komentar` (`id_komentar`, `tanggal_komentar`, `nama_komentar`, `rat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemain`
+-- Table structure for table `pemain`
 --
 
 CREATE TABLE `pemain` (
@@ -242,10 +241,10 @@ CREATE TABLE `pemain` (
   `foto` varchar(225) NOT NULL,
   `bio` text DEFAULT NULL,
   `id_admin` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pemain`
+-- Dumping data for table `pemain`
 --
 
 INSERT INTO `pemain` (`id_pemain`, `nama_pemain`, `tanggal_lahir`, `negara`, `foto`, `bio`, `id_admin`) VALUES
@@ -282,7 +281,7 @@ INSERT INTO `pemain` (`id_pemain`, `nama_pemain`, `tanggal_lahir`, `negara`, `fo
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `riwayat`
+-- Table structure for table `riwayat`
 --
 
 CREATE TABLE `riwayat` (
@@ -290,10 +289,10 @@ CREATE TABLE `riwayat` (
   `id_admin` int(10) NOT NULL,
   `tindakan` text NOT NULL,
   `tanggal` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `riwayat`
+-- Dumping data for table `riwayat`
 --
 
 INSERT INTO `riwayat` (`id_riwayat`, `id_admin`, `tindakan`, `tanggal`) VALUES
@@ -347,18 +346,31 @@ INSERT INTO `riwayat` (`id_riwayat`, `id_admin`, `tindakan`, `tanggal`) VALUES
 (48, 1, 'Berhasil mengubah pemain Jennifer Connelly', 1686147720),
 (49, 1, 'Berhasil menghapus pemain Jennifer Connelly', 1686147729);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `admins`
+-- Indexes for table `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `detail_kategori`
+-- Indexes for table `detail_kategori`
 --
 ALTER TABLE `detail_kategori`
   ADD PRIMARY KEY (`id`),
@@ -366,7 +378,7 @@ ALTER TABLE `detail_kategori`
   ADD KEY `kategori_id` (`kategori_id`);
 
 --
--- Indeks untuk tabel `detail_pemain`
+-- Indexes for table `detail_pemain`
 --
 ALTER TABLE `detail_pemain`
   ADD PRIMARY KEY (`id`),
@@ -374,111 +386,123 @@ ALTER TABLE `detail_pemain`
   ADD KEY `pemain_id` (`pemain_id`);
 
 --
--- Indeks untuk tabel `film`
+-- Indexes for table `film`
 --
 ALTER TABLE `film`
   ADD PRIMARY KEY (`id_film`),
   ADD KEY `id_admin` (`id_admin`);
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indeks untuk tabel `komentar`
+-- Indexes for table `komentar`
 --
 ALTER TABLE `komentar`
   ADD PRIMARY KEY (`id_komentar`),
   ADD KEY `film_id` (`id_film`);
 
 --
--- Indeks untuk tabel `pemain`
+-- Indexes for table `pemain`
 --
 ALTER TABLE `pemain`
   ADD PRIMARY KEY (`id_pemain`),
   ADD KEY `id_admin` (`id_admin`);
 
 --
--- Indeks untuk tabel `riwayat`
+-- Indexes for table `riwayat`
 --
 ALTER TABLE `riwayat`
   ADD PRIMARY KEY (`id_riwayat`),
   ADD KEY `id_admin` (`id_admin`) USING BTREE;
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admins`
+-- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
   MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_kategori`
+-- AUTO_INCREMENT for table `detail_kategori`
 --
 ALTER TABLE `detail_kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_pemain`
+-- AUTO_INCREMENT for table `detail_pemain`
 --
 ALTER TABLE `detail_pemain`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT untuk tabel `film`
+-- AUTO_INCREMENT for table `film`
 --
 ALTER TABLE `film`
   MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `komentar`
+-- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
   MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `pemain`
+-- AUTO_INCREMENT for table `pemain`
 --
 ALTER TABLE `pemain`
   MODIFY `id_pemain` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT untuk tabel `riwayat`
+-- AUTO_INCREMENT for table `riwayat`
 --
 ALTER TABLE `riwayat`
   MODIFY `id_riwayat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `detail_kategori`
+-- Constraints for table `detail_kategori`
 --
 ALTER TABLE `detail_kategori`
   ADD CONSTRAINT `detail_kategori_ibfk_1` FOREIGN KEY (`film_id`) REFERENCES `film` (`id_film`),
   ADD CONSTRAINT `detail_kategori_ibfk_2` FOREIGN KEY (`kategori_id`) REFERENCES `kategori` (`id_kategori`);
 
 --
--- Ketidakleluasaan untuk tabel `detail_pemain`
+-- Constraints for table `detail_pemain`
 --
 ALTER TABLE `detail_pemain`
   ADD CONSTRAINT `detail_pemain_ibfk_1` FOREIGN KEY (`film_id`) REFERENCES `film` (`id_film`),
   ADD CONSTRAINT `detail_pemain_ibfk_2` FOREIGN KEY (`pemain_id`) REFERENCES `pemain` (`id_pemain`);
 
 --
--- Ketidakleluasaan untuk tabel `komentar`
+-- Constraints for table `komentar`
 --
 ALTER TABLE `komentar`
   ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`);
