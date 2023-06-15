@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2023 at 01:59 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 15, 2023 at 02:40 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -355,7 +355,7 @@ INSERT INTO `riwayat` (`id_riwayat`, `id_admin`, `tindakan`, `tanggal`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) DEFAULT NULL,
-  `username` varchar(100) DEFAULT NULL,
+  `email` varchar(225) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
