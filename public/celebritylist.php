@@ -90,8 +90,15 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li class="loginLink"><a href="#">LOG In</a></li>
-						<li class="btn signupLink"><a href="#">sign up</a></li>
+						<!-- jika sudah login (ada session username) -->
+            <?php if (isset($_SESSION["username"])): ?>
+						<li><a href="#">Selamat Datang, <?php echo $_SESSION["username"] ?></a></li>
+						<li class="btn signup"><a href="logout.php">LOGout</a></li>
+						<!-- jika belum login (belum ada session username) -->    
+                <?php else: ?>
+						<li><a href="login.php">LOG In</a></li>
+						<li class="btn signup"><a href="signup.php">sign up</a></li>
+						<?php endif ?>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
