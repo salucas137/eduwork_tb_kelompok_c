@@ -16,15 +16,23 @@ if (isset($_POST["register"]))  {
     $password = $_POST["password"];
 
     
-// Lakukan enkripsi menggunakan MD5 pada kata sandi yang diinputkan
-$encryptedPassword = md5($password);
+    // Lakukan enkripsi menggunakan MD5 pada kata sandi yang diinputkan
+    $encryptedPassword = md5($password);
+
+    //cek username apakah akun sudah ada atau belum
+    $query = $conn->query("SELECT * FROM users WHERE username='$username'");
+    $yangcocok = $query->num_rows;
+    if ($yangcocok==1) {
+      echo "<script>alert('Username sudah digunakan');</script>";
+      echo "<script>location='signup.php';</script>";
+      } else {
     
     // Melakukan query untuk menyimpan data pengguna ke database
     $query = "INSERT INTO users (name, username, password) VALUES ('$name', '$username', '$encryptedPassword')";
     if ($conn->query($query) === TRUE) {
         // Jika data berhasil disimpan, set session dan redirect ke halaman utama
         $_SESSION["username"] = $username; // Menyimpan username dalam session
-        echo "<script>alert('Pendafataran berhasil, anda akan dialihkan ke halaman utama');</script>";
+        echo "<script>alert('Pendafataran berhasil, anda berhasil Login dan akan dialihkan ke halaman utama');</script>";
         // Redirect ke halaman setelah pendaftaran berhasil
         echo "<script>location='index.php';</script>";
         exit();
@@ -32,6 +40,7 @@ $encryptedPassword = md5($password);
         // Jika terjadi kesalahan, tampilkan pesan error
         $error_message = "Terjadi kesalahan saat menyimpan data.";
     }
+  }
   }
 
 ?>
