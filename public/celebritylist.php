@@ -34,6 +34,8 @@
 <body>
 <!--preloading-->
 
+
+
 <!--end of preloading-->
 <!--login form popup-->
 <!--end of login form popup-->
@@ -125,77 +127,82 @@
 		</div>
 	</div>
 </div>
+
+
 <!-- celebrity grid v1 section-->
 <div class="page-single">
 	<div class="container">
 		<div class="row ipad-width2">
-			<div class="col-md-9 col-sm-12 col-xs-12">
-				
-
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="topbar-filter">
+					<!-- mengambil data celebrity -->
+					<?php
+					$data_celebrity = mysqli_query($conn,"SELECT * FROM pemain");
+					// menghitung data 
+					$jumlah_data = mysqli_num_rows($data_celebrity);
+					?>
+					<p>Found <span><?php echo $jumlah_data; ?> celebrities</span> in total</p>
+					<a href="#" class="grid"><i class="ion-grid active"></i></a>
+				</div>
 				<div class="celebrity-items">
 					<?php
-					$query = mysqli_query($conn ,"SELECT * FROM pemain ORDER BY nama_pemain ASC"); 
-          $count = mysqli_num_rows($query);
-					if($count>0){ 
-              while($data=mysqli_fetch_array($query)){
+
+					$batas = 4;
+					$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+					$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+ 
+					$previous = $halaman - 1;
+					$next = $halaman + 1;
+
+					$data = mysqli_query($conn ,"SELECT * FROM pemain"); 
+          $jumlah_data = mysqli_num_rows($data);
+					$total_halaman = ceil($jumlah_data / $batas);
+
+					$data_pemain = mysqli_query($conn ,"SELECT * FROM pemain ORDER BY nama_pemain ASC limit $halaman_awal, $batas"); 
+ 
+          while($d=mysqli_fetch_array($data_pemain)){
           ?>
 
 					<div class="ceb-item">
-						<a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><img style="width: 270px; height: auto;" src="<?php echo $data["foto"]; ?>" alt="" ></a>
+						<a href="celebrity.php?celebrityid=<?= $d['id_pemain'] ?>"><img style="width: 270px; height: auto;" src="<?php echo $d["foto"]; ?>" alt="" ></a>
 						<div class="ceb-infor">
-							<h2><a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><?php echo $data['nama_pemain'] ?></a></h2>
-							<span>Actor, <?php echo $data['negara'] ?></span>
+							<h2><a href="celebrity.php?celebrityid=<?= $d['id_pemain'] ?>"><?php echo $d['nama_pemain'] ?></a></h2>
+							<span>Actor, <?php echo $d['negara'] ?></span>
 						</div>
 					</div>
 
 					<?php 
-              }
-            }
+          }
           ?>
 				</div>
-				
-				
-			</div>
-			<div class="col-md-3 col-xs-12 col-sm-12">
-				<div class="sidebar">
-						
+
+				<div class="topbar-filter">
+					<label>Reviews per page:</label>
+					<select>
+						<option value="range">4 Reviews</option>
+					</select>
 					
-					<div class="celebrities">
-						<h4 class="sb-title">SPOTLIGHT CELEBRITIES</h4>
+					<div class="pagination2">
+						<a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>><i class="ion-arrow-left-b"></i></a>
 						<?php
-						$limit = 4; 
-                    $offsetQuery = "";
-                    if(isset($_GET["page"])){
-                    $offset = ($_GET["page"]*$limit) - $limit;
-
-                    $offsetQuery = "offset $offset";
-                    }
-
-						$query = mysqli_query($conn ,"SELECT * FROM pemain ORDER BY nama_pemain ASC LIMIT $limit $offsetQuery");
-          $count = mysqli_num_rows($query);
-					if($count>0){ 
-              while($data=mysqli_fetch_array($query)){
-          ?>
-						<div class="celeb-item">
-							<a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><img src="<?php echo $data["foto"]; ?>" alt="" width="70" height="70"></a>
-							<div class="celeb-author">
-								<h6><a href="celebrity.php?celebrityid=<?= $data['id_pemain'] ?>"><?php echo $data['nama_pemain'] ?></a></h6>
-								<span><?php echo $data['negara'] ?></span>
-							</div>
-						</div>
-
-						<?php 
-              }
-            }
-          ?>
-
+						for($x=1;$x<=$total_halaman;$x++){
+						?> 
+						<a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+						<?php
+						}
+						?>		
+						<a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>><i class="ion-arrow-right-b"></i></a>
 					</div>
 				</div>
+			</div>
+				
 			</div>
 		</div>
 	</div>
 </div>
 <!--end of celebrity grid v1 section-->
+
+
 <!-- footer section-->
 <footer class="ht-footer">
 	<div class="container">

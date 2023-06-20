@@ -1,8 +1,5 @@
 <?php
-
 include '../admin/dbconnect.php';
-$query = mysqli_query($conn, "SELECT * FROM `film`");
-
 ?>
 <!DOCTYPE html>
 <!--[if IE 7]>
@@ -78,7 +75,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 								Home</a>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default" href="movies.php">
+							<a class="btn btn-default" href="movielist.php">
 								movies
 							</a>
 						</li>
@@ -89,7 +86,7 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 						</li>
 						<li class="dropdown first">
 							<a class="btn btn-default" href="celebritylist.php">
-								Celebrity
+								Celebrities
 							</a>
 						</li>
 						<li class="dropdown first">
@@ -139,24 +136,64 @@ $query = mysqli_query($conn, "SELECT * FROM `film`");
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					
-                    
+					<div class="topbar-filter">
+						<!-- mengambil data celebrity -->
+						<?php
+						$data_film = mysqli_query($conn,"SELECT * FROM film");
+						// menghitung data 
+						$jumlah_data = mysqli_num_rows($data_film);
+						?>
+						<p>Found <span><?php echo $jumlah_data; ?> movies</span> in total</p>
+						<a href="#" class="grid"><i class="ion-grid active"></i></a>
+					</div>
 					<div class="flex-wrap-movielist mv-grid-fw">
-                    <?php
-                        while ($data = mysqli_fetch_array($query)) : ?>
+						<?php
+
+						$batas = 6;
+						$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+						$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;
+						
+						$previous = $halaman - 1;
+						$next = $halaman + 1;
+
+						$data = mysqli_query($conn ,"SELECT * FROM film"); 
+          	$jumlah_data = mysqli_num_rows($data);
+						$total_halaman = ceil($jumlah_data / $batas);
+
+						$data_film = mysqli_query($conn ,"SELECT * FROM film ORDER BY nama_film ASC limit $halaman_awal, $batas"); 
+
+						while ($d = mysqli_fetch_array($data_film)) : ?>
+
 						<div class="movie-item-style-2 movie-item-style-1">
-							<img src="<?php echo $data["gambar"]; ?>" alt="">
+							<img src="<?php echo $d["gambar"]; ?>" alt="">
 							<div class="hvr-inner">
-							<a href="movies.php?movieid=<?= $data['id_film'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+							<a href="movies.php?movieid=<?= $d['id_film'] ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 							</div>
 							<div class="mv-item-infor">
-								<h6><a href="#"><?php echo $data["nama_film"]; ?></a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span><?php echo $data["rating"]; ?></span>/10 </p>
+								<h6><a href="#"><?php echo $d["nama_film"]; ?></a></h6>
+								<p class="rate"><i class="ion-android-star"></i><span><?php echo $d["rating"]; ?></span>/10 </p>
 							</div>
 						</div>
-                        <?php endwhile ?>
+              <?php endwhile ?>
 					</div>
-                    
+
+					<div class="topbar-filter">
+					<label>Movies per page:</label>
+					<select>
+						<option value="range">6 Movies</option>
+					</select>
+					
+					<div class="pagination2">
+						<a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>><i class="ion-arrow-left-b"></i></a>
+						<?php
+						for($x=1;$x<=$total_halaman;$x++){
+						?> 
+						<a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+						<?php
+						}
+						?>		
+						<a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>><i class="ion-arrow-right-b"></i></a>
+					</div>
 					
 				</div>
 			</div>
