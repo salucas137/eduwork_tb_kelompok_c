@@ -1,8 +1,6 @@
 <?php 
 require_once("../admin/dbconnect.php" );
 
-session_start();
-
 // Mengecek apakah pengguna sudah login, jika ya, redirect ke halaman lain
 if (isset($_SESSION["username"])) {
     header("Location: index.php");
