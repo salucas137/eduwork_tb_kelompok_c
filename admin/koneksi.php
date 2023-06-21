@@ -209,6 +209,23 @@ function ubahPemain($data) {
 	riwayat($id_admin, "Berhasil mengubah pemain $nama_pemain");
 	return mysqli_affected_rows($koneksi);
 }
+
+function ubahUsers($data) {
+	global $koneksi;
+	$id = htmlspecialchars($data['id']);
+	$name = htmlspecialchars(addslashes(ucwords($data['name'])));
+	$username = htmlspecialchars(addslashes(ucwords($data['username'])));
+	mysqli_query($koneksi, "UPDATE users SET name = '$name', username = '$username' WHERE id = '$id'");
+	return mysqli_affected_rows($koneksi);
+}
+
+function hapusUsers($id) {
+	global $koneksi;
+	$data = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM users WHERE id = '$id'"));
+	$name = ucwords($data['name']);
+	mysqli_query($koneksi, "DELETE FROM users WHERE id = '$id'");
+	return mysqli_affected_rows($koneksi);
+}
 ?>
 
 <!--- Include Admin js --->
