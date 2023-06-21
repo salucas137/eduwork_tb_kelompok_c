@@ -118,7 +118,7 @@
                 </a>
             </li>
             <li
-                class="sidebar-item active">
+                class="sidebar-item ">
                 <a href="user.php" class='sidebar-link'>
                     <i class="bi bi-people"></i>
                     <span>Users</span>
@@ -126,7 +126,7 @@
             </li>
 
           <li
-                class="sidebar-item active">
+                class="sidebar-item ">
                 <a href="likes.php" class='sidebar-link'>
                     <i class="bi bi-heart"></i>
                     <span>Likes</span>
