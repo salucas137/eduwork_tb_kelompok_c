@@ -266,6 +266,7 @@
                     <th>Durasi</th>
                     <th>Tahun Rillis</th>
                     <th>Rating Film</th>
+                    <th>Likes</th>
                     <th>Gambar</th>
                     <th>Aksi</th>
                   </tr>
@@ -280,6 +281,7 @@
                       <td> <span><?= ucwords($df['durasi']); ?> Min </span></td>
                       <td><?= $df['tahun_rillis']; ?></td>
                       <td><?= $df['rating']; ?></td>
+                      <td><?= $df['likes']; ?></td>
                       <td>
                         <a href="<?= $df['gambar']; ?>" class="enlarge">
                           <img class="img-list-cover" src="<?= $df['gambar']; ?>" alt="<?= $df['gambar']; ?>">
