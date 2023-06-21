@@ -124,14 +124,6 @@
                     <span>Users</span>
                 </a>
             </li>
-
-          <li
-                class="sidebar-item ">
-                <a href="likes.php" class='sidebar-link'>
-                    <i class="bi bi-heart"></i>
-                    <span>Likes</span>
-                </a>
-            </li>
           
             <li
                 class="sidebar-item  ">
