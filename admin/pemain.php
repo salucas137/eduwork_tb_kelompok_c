@@ -117,7 +117,13 @@
                     <span>Komentar</span>
                 </a>
             </li>
-            
+            <li
+                class="sidebar-item active">
+                <a href="user.php" class='sidebar-link'>
+                    <i class="bi bi-people"></i>
+                    <span>Users</span>
+                </a>
+            </li>
             <li
                 class="sidebar-item  ">
                 <a href="logout.php" class='sidebar-link'>
