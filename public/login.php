@@ -1,6 +1,8 @@
 <?php 
 require_once("../admin/dbconnect.php" );
 
+session_start();
+
 // Mengecek apakah pengguna sudah login, jika ya, redirect ke halaman lain
 if (isset($_SESSION["username"])) {
     header("Location: index.php");
@@ -23,6 +25,8 @@ if (isset($_POST["login"]))  {
 
     if ($result->num_rows == 1) {
         // Jika data pengguna ditemukan, set session dan redirect ke halaman utama
+        $row = $result->fetch_assoc();
+        $_SESSION['id'] = $row['id'];
         $_SESSION["username"] = $username;  // Menyimpan username dalam session
         echo "<script>alert('Login berhasil, anda akan dialihkan ke halaman utama');</script>";
         // Redirect ke halaman setelah login berhasil
