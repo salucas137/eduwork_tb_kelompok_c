@@ -238,12 +238,10 @@ include '../admin/dbconnect.php';
 								$userLiked = mysqli_num_rows($results) == 1;
 
 								if ($userLiked) {
-									// User already likes the film
 							?>
 									<span class="unlike fa-solid fa-heart" data-id="<?php echo $moviesid; ?>"></span>
 									<span class="like hide fa-regular fa-heart" data-id="<?php echo $moviesid; ?>"></span>
 								<?php } else { ?>
-									// User has not yet liked the film
 									<span class="like fa-regular fa-heart" data-id="<?php echo $moviesid; ?>"></span>
 									<span class="unlike hide fa-solid fa-heart" data-id="<?php echo $moviesid; ?>"></span>
 							<?php }
