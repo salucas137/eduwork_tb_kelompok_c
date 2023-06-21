@@ -63,7 +63,7 @@ if (isset($_POST['liked'])) {
 
                 if ($n > 0) {
                     mysqli_query($conn, "DELETE FROM likes WHERE film_id = $film_id AND user_id = $userid");
-                    mysqli_query($conn, "UPDATE film SET likes = $n-1 WHERE id_film = $film_id");
+                    mysqli_query($conn, "UPDATE film SET likes = GREATEST($n-1, 0) WHERE id_film = $film_id");
                     echo $n - 1;
                 } else {
                     echo $n;

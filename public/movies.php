@@ -229,20 +229,26 @@ include '../admin/dbconnect.php';
 						<h1 class="bd-hd"><?= $film["nama_film"]; ?> <span><?php echo $film['tahun_rillis'] ?></span></h1>
 
 						<div class="social-btn">
-
 							<?php
-							// Determine if the user has already liked this film
-							$results = mysqli_query($conn, "SELECT * FROM likes WHERE user_id = '1' AND film_id = '$moviesid'");
+							if (isset($_SESSION['id'])) {
+								// User is logged in, render the like button
+								// Determine if the user has already liked this film
+								$userid = $_SESSION['id'];
+								$results = mysqli_query($conn, "SELECT * FROM likes WHERE user_id = '$userid' AND film_id = '$moviesid'");
+								$userLiked = mysqli_num_rows($results) == 1;
 
-							if (mysqli_num_rows($results) == 1) : ?>
-								<!-- User already likes the film -->
-								<span class="unlike fa-solid fa-heart" data-id="<?php echo $moviesid; ?>"></span>
-								<span class="like hide fa-regular fa-heart" data-id="<?php echo $moviesid; ?>"></span>
-							<?php else : ?>
-								<!-- User has not yet liked the film -->
-								<span class="like fa-regular fa-heart" data-id="<?php echo $moviesid; ?>"></span>
-								<span class="unlike hide fa-solid fa-heart" data-id="<?php echo $moviesid; ?>"></span>
-							<?php endif; ?>
+								if ($userLiked) {
+									// User already likes the film
+							?>
+									<span class="unlike fa-solid fa-heart" data-id="<?php echo $moviesid; ?>"></span>
+									<span class="like hide fa-regular fa-heart" data-id="<?php echo $moviesid; ?>"></span>
+								<?php } else { ?>
+									// User has not yet liked the film
+									<span class="like fa-regular fa-heart" data-id="<?php echo $moviesid; ?>"></span>
+									<span class="unlike hide fa-solid fa-heart" data-id="<?php echo $moviesid; ?>"></span>
+							<?php }
+							} ?>
+
 
 							<span class="likes_count"> <?php echo $film['likes']; ?> likes</span>
 
