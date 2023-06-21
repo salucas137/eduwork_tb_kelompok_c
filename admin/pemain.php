@@ -119,13 +119,13 @@
             </li>
             <li
                 class="sidebar-item active">
-                <a href="user.php" class='sidebar-link'>
+                <a href="users.php" class='sidebar-link'>
                     <i class="bi bi-people"></i>
                     <span>Users</span>
                 </a>
             </li>
            <li
-                class="sidebar-item active">
+                class="sidebar-item ">
                 <a href="likes.php" class='sidebar-link'>
                     <i class="bi bi-heart"></i>
                     <span>Likes</span>
