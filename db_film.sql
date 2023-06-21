@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2023 at 06:26 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Jun 21, 2023 at 10:50 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -186,6 +186,7 @@ CREATE TABLE `film` (
   `durasi` varchar(255) NOT NULL,
   `tahun_rillis` varchar(255) NOT NULL,
   `rating` varchar(255) NOT NULL,
+  `likes` int(11) NOT NULL,
   `gambar` varchar(225) DEFAULT NULL,
   `id_admin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -194,25 +195,25 @@ CREATE TABLE `film` (
 -- Dumping data for table `film`
 --
 
-INSERT INTO `film` (`id_film`, `nama_film`, `sinopsis`, `durasi`, `tahun_rillis`, `rating`, `gambar`, `id_admin`) VALUES
-(1, 'John Wick: Chapter 4', 'Dengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\nDengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\n.', '169', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/03/1680072357-2783-vZloFAK7NmvMGKE7VkF5UHaz0I.jpg', 1),
-(2, 'Fast X', 'Selama banyak misi dan melawan rintangan yang mustahil, Dom Toretto dan keluarganya telah mengakali, mengalahkan, dan mengalahkan setiap musuh di jalan mereka. Sekarang, mereka menghadapi lawan paling mematikan yang pernah mereka hadapi: Ancaman mengerikan yang muncul dari bayang-bayang masa lalu yang dipicu oleh dendam darah, dan yang bertekad untuk menghancurkan keluarga ini dan menghancurkan segalanya—dan semua orang—yang dicintai Dom, selamanya. .\r\n', '142', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/05/1684749882-6839-1E5baAaEse26fej7uHcjOgEE2t2.jpg', 1),
-(3, 'One Piece: Stampede', 'One Piece: Stampede adalah film yang berdiri sendiri yang merayakan ulang tahun ke-20 anime dan mengambil tempat di luar kanon serial TV “One Piece”. Monkey D. Luffy dan kru bajak laut Topi Jerami diundang ke Festival Bajak Laut besar-besaran yang membawa banyak karakter paling ikonik dari seluruh waralaba untuk berpartisipasi dalam persaingan dengan Topi Jerami untuk menemukan harta karun Roger. Itu juga mengadu Topi Jerami melawan musuh baru bernama Bullet, mantan anggota kru Roger.', '101', '2019', '9', 'https://image.tmdb.org/t/p/w300/4E2lyUGLEr3yH4q6kJxPkQUhX7n.jpg', 1),
-(4, 'Love Again', 'Mira Ray, berurusan dengan kehilangan tunangannya, mengirimkan serangkaian teks romantis ke nomor ponsel lamanya… tanpa menyadari bahwa nomor tersebut telah dipindahkan ke telepon kantor baru Rob Burns. Seorang jurnalis, Rob terpikat oleh kejujuran dalam teks pengakuan yang indah. Ketika dia ditugaskan untuk menulis profil megabintang Céline Dion, dia meminta bantuannya untuk menemukan cara bertemu Mira secara langsung dan memenangkan hatinya.\r\n', '104', '2023', '7', 'https://melongmovie.site/wp-content/uploads/2023/05/1685108440-5884-yGEiqgynu453hMHxOZYtZlisv95.jpg', 1),
-(5, 'The Pope’s Exorcist', 'Pastor Gabriele Amorth, Kepala Exorcist Vatikan, menyelidiki kepemilikan menakutkan seorang anak laki-laki dan akhirnya mengungkap konspirasi berusia berabad-abad yang berusaha keras disembunyikan oleh Vatikan.\r\n', '103', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/05/1683179514-7970-9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg', 1),
-(6, 'Spider-Man: No Way Home', 'Identitas Spider-Man sekarang sudah terungkap, dan Peter meminta bantuan Doctor Strange. namun sebuah kesalahan terjadi, dan itu justru mengundang musuh berbahaya dari dunia lain, mereka mulai bermunculan. Hal itu memaksa Peter mencari apa makna sebenarnya menjadi Spider-Man.', '148', '2021', '9', 'https://melongmovie.site/wp-content/uploads/2022/03/ucOdFo3uc6EOts6TI6qoxcpEkcX.jpg', 1),
-(7, 'Avengers: Endgame', 'Melanjutkan Avengers Infinity War, dimana kejadian setelah Thanos berhasil mendapatkan semua infinity stones dan memusnahkan 50% semua mahluk hidup di alam semesta. Akankah para Avengers berhasil mengalahkan Thanos?', '181', '2019', '8', 'https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg', 1),
-(8, 'Everything Everywhere All at Once', 'Film ini menceritakan kisah tentang seorang imigran China di Amerika Serikat bernama Evelyn Wang yang mengalami kehidupan sulit secara ekonomi. Dia harus bekerja keras untuk memenuhi kebutuhan hidup.', '139', '2022', '9', 'https://melongmovie.site/wp-content/uploads/2022/05/1652866730-2595-w3LxiVYdWWRvEVdn5RYq6jIqkb1.jpg', 1),
-(9, 'Top Gun: Maverick', 'Setelah lebih dari tiga puluh tahun mengabdi sebagai salah satu penerbang top Angkatan Laut, dan menghindari kenaikan pangkat yang akan menjatuhkannya, Pete “Maverick” Mitchell mendapati dirinya melatih satu detasemen lulusan TOP GUN untuk misi khusus yang tidak ada kehidupan. pilot pernah melihat.', '131', '2022', '8', 'https://melongmovie.site/wp-content/uploads/2022/08/1660838190-5528-62HCnUTziyWcpDaBO2i1DX17ljH.jpg', 1),
-(10, 'Annabelle', 'Pasangan suami istri John dan Mia mulai mengalami banyak kejadian supranatural mengerikan yang melibatkan sosok boneka kuno menakutkan, setelah rumah mereka diserang oleh pemuja setan.', '99', '2014', '6', 'https://melongmovie.site/wp-content/uploads/2020/12/1609328682-yLsuU2P2SpDYFwtZQ7dtfVAf6TE.jpg', 1),
-(11, 'Fast & Furious 6', 'Hobbs meminta Dominic dan Brian mengumpulkan kembali kru mereka untuk menjatuhkan tim tentara bayaran: Dominic tiba-tiba menjadi berbelit-belit juga menghadapi pacarnya yang diduga telah meninggal, Letty.', '131 ', '2013', '8', 'https://image.tmdb.org/t/p/w300/n31VRDodbaZxkrZmmzyYSFNVpW5.jpg', 1),
-(12, 'Transformers: Rise of the Beasts', 'Saat ancaman baru yang mampu menghancurkan seluruh planet muncul, Optimus Prime dan Autobots harus bekerja sama dengan faksi kuat yang dikenal sebagai Maximals. Dengan nasib umat manusia yang berada di ujung tanduk, manusia Noah dan Elena akan melakukan apa saja untuk membantu para Transformer saat mereka terlibat dalam pertempuran pamungkas untuk menyelamatkan Bumi.', '127 ', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/06/1686708218-5973-gPbM0MK8CP8A174rmUwGsADNYKD.jpg', 1),
-(13, 'The Flash', 'Ketika upayanya untuk menyelamatkan keluarganya secara tidak sengaja mengubah masa depan, Barry Allen terjebak dalam kenyataan di mana Jenderal Zod telah kembali dan tidak ada Pahlawan Super yang bisa dituju. Untuk menyelamatkan dunia tempat dia berada dan kembali ke masa depan yang dia tahu, satu-satunya harapan Barry adalah berlomba untuk hidupnya. Tetapi apakah pengorbanan terakhir cukup untuk mengatur ulang alam semesta?\r\n.', '144 ', '2023', '7', 'https://melongmovie.site/wp-content/uploads/2023/06/1686797805-9733-cLqyz8aMgR0veS3U1ESKeIwD0TA.jpg', 1),
-(14, 'Spider-Man: Across the Spider-Verse', 'Setelah bersatu kembali dengan Gwen Stacy, Spider-Man lingkungan penuh waktu dan ramah di Brooklyn terlempar melintasi Multiverse, di mana dia bertemu dengan Spider Society, sebuah tim Spider-People yang bertugas melindungi keberadaan Multiverse. Namun ketika para pahlawan bentrok tentang cara menangani ancaman baru, Miles menemukan dirinya diadu dengan Laba-laba lain dan harus berangkat sendiri untuk menyelamatkan orang-orang yang paling dia cintai.', '140', '2023', '9', 'https://melongmovie.site/wp-content/uploads/2023/06/1686131947-5193-8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg', 1),
-(15, 'Black Clover: Sword of the Wizard King', 'Sebagai anak laki-laki berhati singa yang tidak bisa menggunakan sihir berjuang untuk mendapatkan gelar Raja Penyihir, empat Raja Penyihir yang dibuang kembali untuk menghancurkan Kerajaan Semanggi.', '113 ', '2023', '8', 'https://melongmovie.site/wp-content/uploads/2023/06/1686944265-6505-xyyNfq6QRGTgLbPEw6mwhKnGnKR.jpg', 1),
-(16, 'The Village', 'Di sebuah desa yang dulunya indah sekarang didominasi oleh tempat pembuangan sampah yang luas, seorang pemuda ingin sekali melepaskan diri dari takdir kejam yang mengikatnya di tanah.', '120 ', '2023', '10', 'https://melongmovie.site/wp-content/uploads/2023/06/1686943178-7028-9mPCRtKjtwDq2gbZTbrgmAp7SMl.jpg', 1),
-(17, 'Maze Runner: The Death Cure ', 'Thomas memimpin kelompok Gladers yang melarikan diri dalam misi terakhir dan paling berbahaya mereka. Untuk menyelamatkan teman-teman mereka, mereka harus masuk ke Last City yang legendaris, sebuah labirin yang dikendalikan oleh WCKD yang mungkin berubah menjadi labirin paling mematikan. Siapa pun yang berhasil keluar hidup-hidup akan mendapatkan jawaban atas pertanyaan yang diajukan para Glader sejak mereka pertama kali tiba di labirin.', '143 ', '2018', '7', 'https://image.tmdb.org/t/p/w300/2zYfzA3TBwrMC8tfFbpiTLODde0.jpg', 1),
-(18, 'The Jungle Book', 'Seorang anak laki-laki bernama Mowgli diasuh oleh serigala. Setelah mendapat ancaman dari harimau Shere Khan, Mowgli terpaksa melarikan diri dari hutan, di mana dia memulai perjalanan penemuan diri dengan bantuan macan kumbang, Bagheera dan beruang berjiwa bebas, Baloo.', '106', '2016', '7', 'https://image.tmdb.org/t/p/w300/xIGhgcLtzzTON56G905I5tuwNQM.jpg', 1);
+INSERT INTO `film` (`id_film`, `nama_film`, `sinopsis`, `durasi`, `tahun_rillis`, `rating`, `likes`, `gambar`, `id_admin`) VALUES
+(1, 'John Wick: Chapter 4', 'Dengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\nDengan harga di kepalanya yang terus meningkat, John Wick menemukan jalan untuk mengalahkan The High Table. Tapi sebelum dia bisa mendapatkan kebebasannya, Wick harus berhadapan dengan musuh baru dengan aliansi yang kuat di seluruh dunia dan kekuatan yang mengubah teman lama menjadi musuh.\r\n.', '169', '2023', '8', 1, 'https://melongmovie.site/wp-content/uploads/2023/03/1680072357-2783-vZloFAK7NmvMGKE7VkF5UHaz0I.jpg', 1),
+(2, 'Fast X', 'Selama banyak misi dan melawan rintangan yang mustahil, Dom Toretto dan keluarganya telah mengakali, mengalahkan, dan mengalahkan setiap musuh di jalan mereka. Sekarang, mereka menghadapi lawan paling mematikan yang pernah mereka hadapi: Ancaman mengerikan yang muncul dari bayang-bayang masa lalu yang dipicu oleh dendam darah, dan yang bertekad untuk menghancurkan keluarga ini dan menghancurkan segalanya—dan semua orang—yang dicintai Dom, selamanya. .\r\n', '142', '2023', '8', 0, 'https://melongmovie.site/wp-content/uploads/2023/05/1684749882-6839-1E5baAaEse26fej7uHcjOgEE2t2.jpg', 1),
+(3, 'One Piece: Stampede', 'One Piece: Stampede adalah film yang berdiri sendiri yang merayakan ulang tahun ke-20 anime dan mengambil tempat di luar kanon serial TV “One Piece”. Monkey D. Luffy dan kru bajak laut Topi Jerami diundang ke Festival Bajak Laut besar-besaran yang membawa banyak karakter paling ikonik dari seluruh waralaba untuk berpartisipasi dalam persaingan dengan Topi Jerami untuk menemukan harta karun Roger. Itu juga mengadu Topi Jerami melawan musuh baru bernama Bullet, mantan anggota kru Roger.', '101', '2019', '9', 0, 'https://image.tmdb.org/t/p/w300/4E2lyUGLEr3yH4q6kJxPkQUhX7n.jpg', 1),
+(4, 'Love Again', 'Mira Ray, berurusan dengan kehilangan tunangannya, mengirimkan serangkaian teks romantis ke nomor ponsel lamanya… tanpa menyadari bahwa nomor tersebut telah dipindahkan ke telepon kantor baru Rob Burns. Seorang jurnalis, Rob terpikat oleh kejujuran dalam teks pengakuan yang indah. Ketika dia ditugaskan untuk menulis profil megabintang Céline Dion, dia meminta bantuannya untuk menemukan cara bertemu Mira secara langsung dan memenangkan hatinya.\r\n', '104', '2023', '7', 0, 'https://melongmovie.site/wp-content/uploads/2023/05/1685108440-5884-yGEiqgynu453hMHxOZYtZlisv95.jpg', 1),
+(5, 'The Pope’s Exorcist', 'Pastor Gabriele Amorth, Kepala Exorcist Vatikan, menyelidiki kepemilikan menakutkan seorang anak laki-laki dan akhirnya mengungkap konspirasi berusia berabad-abad yang berusaha keras disembunyikan oleh Vatikan.\r\n', '103', '2023', '8', 0, 'https://melongmovie.site/wp-content/uploads/2023/05/1683179514-7970-9JBEPLTPSm0d1mbEcLxULjJq9Eh.jpg', 1),
+(6, 'Spider-Man: No Way Home', 'Identitas Spider-Man sekarang sudah terungkap, dan Peter meminta bantuan Doctor Strange. namun sebuah kesalahan terjadi, dan itu justru mengundang musuh berbahaya dari dunia lain, mereka mulai bermunculan. Hal itu memaksa Peter mencari apa makna sebenarnya menjadi Spider-Man.', '148', '2021', '9', 0, 'https://melongmovie.site/wp-content/uploads/2022/03/ucOdFo3uc6EOts6TI6qoxcpEkcX.jpg', 1),
+(7, 'Avengers: Endgame', 'Melanjutkan Avengers Infinity War, dimana kejadian setelah Thanos berhasil mendapatkan semua infinity stones dan memusnahkan 50% semua mahluk hidup di alam semesta. Akankah para Avengers berhasil mengalahkan Thanos?', '181', '2019', '8', 0, 'https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg', 1),
+(8, 'Everything Everywhere All at Once', 'Film ini menceritakan kisah tentang seorang imigran China di Amerika Serikat bernama Evelyn Wang yang mengalami kehidupan sulit secara ekonomi. Dia harus bekerja keras untuk memenuhi kebutuhan hidup.', '139', '2022', '9', 0, 'https://melongmovie.site/wp-content/uploads/2022/05/1652866730-2595-w3LxiVYdWWRvEVdn5RYq6jIqkb1.jpg', 1),
+(9, 'Top Gun: Maverick', 'Setelah lebih dari tiga puluh tahun mengabdi sebagai salah satu penerbang top Angkatan Laut, dan menghindari kenaikan pangkat yang akan menjatuhkannya, Pete “Maverick” Mitchell mendapati dirinya melatih satu detasemen lulusan TOP GUN untuk misi khusus yang tidak ada kehidupan. pilot pernah melihat.', '131', '2022', '8', 0, 'https://melongmovie.site/wp-content/uploads/2022/08/1660838190-5528-62HCnUTziyWcpDaBO2i1DX17ljH.jpg', 1),
+(10, 'Annabelle', 'Pasangan suami istri John dan Mia mulai mengalami banyak kejadian supranatural mengerikan yang melibatkan sosok boneka kuno menakutkan, setelah rumah mereka diserang oleh pemuja setan.', '99', '2014', '6', 0, 'https://melongmovie.site/wp-content/uploads/2020/12/1609328682-yLsuU2P2SpDYFwtZQ7dtfVAf6TE.jpg', 1),
+(11, 'Fast & Furious 6', 'Hobbs meminta Dominic dan Brian mengumpulkan kembali kru mereka untuk menjatuhkan tim tentara bayaran: Dominic tiba-tiba menjadi berbelit-belit juga menghadapi pacarnya yang diduga telah meninggal, Letty.', '131 ', '2013', '8', 0, 'https://image.tmdb.org/t/p/w300/n31VRDodbaZxkrZmmzyYSFNVpW5.jpg', 1),
+(12, 'Transformers: Rise of the Beasts', 'Saat ancaman baru yang mampu menghancurkan seluruh planet muncul, Optimus Prime dan Autobots harus bekerja sama dengan faksi kuat yang dikenal sebagai Maximals. Dengan nasib umat manusia yang berada di ujung tanduk, manusia Noah dan Elena akan melakukan apa saja untuk membantu para Transformer saat mereka terlibat dalam pertempuran pamungkas untuk menyelamatkan Bumi.', '127 ', '2023', '8', 0, 'https://melongmovie.site/wp-content/uploads/2023/06/1686708218-5973-gPbM0MK8CP8A174rmUwGsADNYKD.jpg', 1),
+(13, 'The Flash', 'Ketika upayanya untuk menyelamatkan keluarganya secara tidak sengaja mengubah masa depan, Barry Allen terjebak dalam kenyataan di mana Jenderal Zod telah kembali dan tidak ada Pahlawan Super yang bisa dituju. Untuk menyelamatkan dunia tempat dia berada dan kembali ke masa depan yang dia tahu, satu-satunya harapan Barry adalah berlomba untuk hidupnya. Tetapi apakah pengorbanan terakhir cukup untuk mengatur ulang alam semesta?\r\n.', '144 ', '2023', '7', 0, 'https://melongmovie.site/wp-content/uploads/2023/06/1686797805-9733-cLqyz8aMgR0veS3U1ESKeIwD0TA.jpg', 1),
+(14, 'Spider-Man: Across the Spider-Verse', 'Setelah bersatu kembali dengan Gwen Stacy, Spider-Man lingkungan penuh waktu dan ramah di Brooklyn terlempar melintasi Multiverse, di mana dia bertemu dengan Spider Society, sebuah tim Spider-People yang bertugas melindungi keberadaan Multiverse. Namun ketika para pahlawan bentrok tentang cara menangani ancaman baru, Miles menemukan dirinya diadu dengan Laba-laba lain dan harus berangkat sendiri untuk menyelamatkan orang-orang yang paling dia cintai.', '140', '2023', '9', 0, 'https://melongmovie.site/wp-content/uploads/2023/06/1686131947-5193-8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg', 1),
+(15, 'Black Clover: Sword of the Wizard King', 'Sebagai anak laki-laki berhati singa yang tidak bisa menggunakan sihir berjuang untuk mendapatkan gelar Raja Penyihir, empat Raja Penyihir yang dibuang kembali untuk menghancurkan Kerajaan Semanggi.', '113 ', '2023', '8', 0, 'https://melongmovie.site/wp-content/uploads/2023/06/1686944265-6505-xyyNfq6QRGTgLbPEw6mwhKnGnKR.jpg', 1),
+(16, 'The Village', 'Di sebuah desa yang dulunya indah sekarang didominasi oleh tempat pembuangan sampah yang luas, seorang pemuda ingin sekali melepaskan diri dari takdir kejam yang mengikatnya di tanah.', '120 ', '2023', '10', 0, 'https://melongmovie.site/wp-content/uploads/2023/06/1686943178-7028-9mPCRtKjtwDq2gbZTbrgmAp7SMl.jpg', 1),
+(17, 'Maze Runner: The Death Cure ', 'Thomas memimpin kelompok Gladers yang melarikan diri dalam misi terakhir dan paling berbahaya mereka. Untuk menyelamatkan teman-teman mereka, mereka harus masuk ke Last City yang legendaris, sebuah labirin yang dikendalikan oleh WCKD yang mungkin berubah menjadi labirin paling mematikan. Siapa pun yang berhasil keluar hidup-hidup akan mendapatkan jawaban atas pertanyaan yang diajukan para Glader sejak mereka pertama kali tiba di labirin.', '143 ', '2018', '7', 0, 'https://image.tmdb.org/t/p/w300/2zYfzA3TBwrMC8tfFbpiTLODde0.jpg', 1),
+(18, 'The Jungle Book', 'Seorang anak laki-laki bernama Mowgli diasuh oleh serigala. Setelah mendapat ancaman dari harimau Shere Khan, Mowgli terpaksa melarikan diri dari hutan, di mana dia memulai perjalanan penemuan diri dengan bantuan macan kumbang, Bagheera dan beruang berjiwa bebas, Baloo.', '106', '2016', '7', 0, 'https://image.tmdb.org/t/p/w300/xIGhgcLtzzTON56G905I5tuwNQM.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -270,6 +271,25 @@ INSERT INTO `komentar` (`id_komentar`, `tanggal_komentar`, `nama_komentar`, `rat
 (12, '2023-06-01', 'Aki', 10, 'Akhir ceritanya membuat semua 22 film sepadan', 'Jika Anda akan menonton film ini, hindari spoiler, bahkan ulasan bebas spoiler. Itulah mengapa saya tidak akan mengatakan apa-apa tentang film. Bahkan pendapat saya pun tidak. Yang akan saya katakan adalah:\r\n\r\nPenonton bertepuk tangan 3 kali selama film diputar, dan berdiri untuk bertepuk tangan setelahnya. Ini belum pernah saya saksikan di bioskop Belanda. Kerumunan orang Belanda biasanya tidak menyukai hal ini. Saya memeriksa baris tempat saya duduk, dan orang-orang menangis. Setelah film selesai, saya melihat orang-orang dengan maskara yang luntur. Itu saja yang harus saya katakan tentang film ini.', 7),
 (14, '2023-06-02', 'Hana', 9, 'Sekuel yang luar biasa', 'Sekuel yang luar biasa - saya, sebenarnya, lebih menyukainya daripada pendahulunya.\r\n\r\nSederhananya, \'Top Gun: Maverick\' itu fantastis. Saya mengharapkannya menjadi bagus, tetapi sebenarnya jauh lebih menyenangkan daripada yang saya perkirakan. Panggilan balik ke aslinya dilakukan dengan ahli, karakter baru kuat / dilemparkan dengan baik, memiliki banyak makna, musiknya luar biasa, dan aksinya luar biasa - hal-hal udara sensasional.\r\n\r\nCeritanya luar biasa, dengan setiap taruhan tinggi muncul sebagaimana dimaksud - bagian-bagiannya bahkan membuat saya sedikit merinding, yang merupakan kejutan mengingat saya bukan seseorang yang memiliki hubungan dengan film tahun 1986. Semuanya disatukan dengan sangat rapi, sejujurnya saya hampir memberikannya peringkat yang lebih tinggi.\r\n\r\nJam tangan yang bagus - Saya sangat merekomendasikannya, meskipun tentu saja saya menyarankan untuk menonton film sebelumnya terlebih dahulu jika Anda belum melakukannya.', 9),
 (15, '2023-06-01', 'Anna', 6, 'Film horror yang menyenangkan', 'Film horor menyenangkan yang cukup menyeramkan dan menegangkan dengan beberapa lompatan yang menakutkan dan momen yang mencengangkan. Juga benar-benar mematahkan klise dari suami/pacar skeptis yang menyebalkan, yang membuatku bahagia.', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `film_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `user_id`, `film_id`) VALUES
+(0, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -408,7 +428,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`) VALUES
-(1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+(1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
+(2, 'ievy', 'ievy', 'fd88fcb01d6b345c1984e06a2f8b7084');
 
 --
 -- Indexes for dumped tables
@@ -455,6 +476,13 @@ ALTER TABLE `kategori`
 ALTER TABLE `komentar`
   ADD PRIMARY KEY (`id_komentar`),
   ADD KEY `film_id` (`id_film`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD KEY `fk_id_users` (`user_id`),
+  ADD KEY `fk_id_film` (`film_id`);
 
 --
 -- Indexes for table `pemain`
@@ -533,7 +561,7 @@ ALTER TABLE `riwayat`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -558,6 +586,13 @@ ALTER TABLE `detail_pemain`
 --
 ALTER TABLE `komentar`
   ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`);
+
+--
+-- Constraints for table `likes`
+--
+ALTER TABLE `likes`
+  ADD CONSTRAINT `fk_id_film` FOREIGN KEY (`film_id`) REFERENCES `film` (`id_film`),
+  ADD CONSTRAINT `fk_id_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
