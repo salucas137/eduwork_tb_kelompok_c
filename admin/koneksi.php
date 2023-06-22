@@ -112,6 +112,7 @@ function tambahFilm($data) {
 	$durasi = htmlspecialchars(addslashes(ucwords($data['durasi'])));
 	$tahun_rillis = htmlspecialchars(addslashes($data['tahun_rillis']));
 	$rating = htmlspecialchars($data['rating']);
+	$likes = htmlspecialchars($data['likes']);
 	$gambar = htmlspecialchars(addslashes($data['gambar']));
 	$id_admin = $_SESSION['id_admin'];
 	if (!$gambar) {
@@ -140,6 +141,7 @@ function ubahFilm($data) {
 	$tahun_rillis = htmlspecialchars($data['tahun_rillis']);
 	$rating = htmlspecialchars($data['rating']);
 	$id_admin = $_SESSION['id_admin'];
+	$likes = htmlspecialchars($data['likes']);
 	$gambar = htmlspecialchars($data['gambar']);
 	
 	mysqli_query($koneksi, "UPDATE film SET nama_film = '$nama_film',  sinopsis = '$sinopsis', durasi = '$durasi', tahun_rillis = '$tahun_rillis', rating = '$rating', gambar = '$gambar', id_admin = '$id_admin' WHERE id_film = '$id_film'");
