@@ -118,7 +118,7 @@ function tambahFilm($data) {
 	if (!$gambar) {
 		return false;
 	}
-	mysqli_query($koneksi, "INSERT INTO film VALUES ('', '$nama_film',  '$sinopsis', '$durasi',  '$tahun_rillis', '$rating',  '$gambar', '$id_admin')");
+	mysqli_query($koneksi, "INSERT INTO film VALUES ('', '$nama_film',  '$sinopsis', '$durasi',  '$tahun_rillis', '$rating', '$likes', '$gambar', '$id_admin')");
 	riwayat($id_admin, "Berhasil menambahkan film $nama_film");
 	return mysqli_affected_rows($koneksi);
 }
@@ -144,7 +144,7 @@ function ubahFilm($data) {
 	$likes = htmlspecialchars($data['likes']);
 	$gambar = htmlspecialchars($data['gambar']);
 	
-	mysqli_query($koneksi, "UPDATE film SET nama_film = '$nama_film',  sinopsis = '$sinopsis', durasi = '$durasi', tahun_rillis = '$tahun_rillis', rating = '$rating', gambar = '$gambar', id_admin = '$id_admin' WHERE id_film = '$id_film'");
+	mysqli_query($koneksi, "UPDATE film SET nama_film = '$nama_film',  sinopsis = '$sinopsis', durasi = '$durasi', tahun_rillis = '$tahun_rillis', rating = '$rating', likes = '$likes', gambar = '$gambar', id_admin = '$id_admin' WHERE id_film = '$id_film'");
 	riwayat($id_admin, "Berhasil mengubah film $nama_film");
 	return mysqli_affected_rows($koneksi);
 }
